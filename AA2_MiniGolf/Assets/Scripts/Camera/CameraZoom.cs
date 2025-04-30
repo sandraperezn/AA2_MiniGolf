@@ -8,7 +8,7 @@ public class CameraZoom : MonoBehaviour
     public float minRadius = 5f;
     public float maxRadius = 20f;
 
-    void Update()
+    private void Update()
     {
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         if (scroll != 0f)

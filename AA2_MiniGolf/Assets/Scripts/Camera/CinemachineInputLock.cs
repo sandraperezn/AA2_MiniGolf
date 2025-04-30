@@ -7,15 +7,19 @@ public class CinemachineInputLock : MonoBehaviour
     public string inputAxisX = "Mouse X";
     public string inputAxisY = "Mouse Y";
 
-    void Update()
+    private void Update()
     {
         if (Input.GetMouseButton(1)) // Click derecho presionado
         {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
             freeLookCamera.m_XAxis.m_InputAxisName = inputAxisX;
             freeLookCamera.m_YAxis.m_InputAxisName = inputAxisY;
         }
         else
         {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
             // Desactiva el input
             freeLookCamera.m_XAxis.m_InputAxisName = "";
             freeLookCamera.m_YAxis.m_InputAxisName = "";

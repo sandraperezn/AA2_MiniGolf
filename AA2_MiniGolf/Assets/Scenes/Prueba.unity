@@ -279,9 +279,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1010716932}
+  - component: {fileID: 1010716933}
   - component: {fileID: 1010716931}
   - component: {fileID: 1010716930}
-  - component: {fileID: 1010716933}
   - component: {fileID: 1010716934}
   m_Layer: 0
   m_Name: GolfBall
@@ -417,7 +417,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 0.5
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -430,6 +430,15 @@ LineRenderer:
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -649,11 +658,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8768492812042765644, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000008501525
+      value: 0.000000008501525
       objectReference: {fileID: 0}
     - target: {fileID: 8768492812042765644, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000013186965
+      value: -0.0000000013186965
       objectReference: {fileID: 0}
     - target: {fileID: 8979308566184540033, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalRotation.w
@@ -665,11 +674,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8979308566184540033, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0000000084769605
+      value: -0.000000008476966
       objectReference: {fileID: 0}
     - target: {fileID: 8979308566184540033, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000014683263
+      value: 0.000000001468327
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

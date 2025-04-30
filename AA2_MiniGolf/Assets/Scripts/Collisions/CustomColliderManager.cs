@@ -1,20 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CustomCollisionManager : MonoBehaviour
+public class CustomCollisionManager : Singleton<CustomCollisionManager>
 {
-    public static CustomCollisionManager Instance { get; private set; }
-    private List<CustomCollider> colliders = new List<CustomCollider>();
-
-    private void Awake()
-    {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
-    }
-
-    public void Register(CustomCollider c)   => colliders.Add(c);
+    public void Register(CustomCollider c) => colliders.Add(c);
     public void Unregister(CustomCollider c) => colliders.Remove(c);
 
+    private List<CustomCollider> colliders = new();
 
     //Comprueba si una esfera (center, radius) choca con alguno de tus CustomCollider.
     // Devuelve el primero que choque, su normal y penetración.
@@ -24,7 +16,7 @@ public class CustomCollisionManager : MonoBehaviour
         out Vector3 normal,
         out float penetration)
     {
-        foreach (var c in colliders)
+        foreach (CustomCollider c in colliders)
         {
             if (c.DetectCollision(center, radius, out normal, out penetration))
             {
