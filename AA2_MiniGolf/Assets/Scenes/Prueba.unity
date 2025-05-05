@@ -211,7 +211,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -391,7 +391,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 51117636f99409448aebb823fc0e0933, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -552,6 +552,14 @@ PrefabInstance:
       propertyPath: m_LookAt
       value: 
       objectReference: {fileID: 1010716932}
+    - target: {fileID: 965165014650964449, guid: a14986d1916980a44809387148346e79, type: 3}
+      propertyPath: m_XAxis.m_InputAxisName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 965165014650964449, guid: a14986d1916980a44809387148346e79, type: 3}
+      propertyPath: m_YAxis.m_InputAxisName
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1628375956816719516, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -595,6 +603,22 @@ PrefabInstance:
     - target: {fileID: 1628375956816719516, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3270683371337291324, guid: a14986d1916980a44809387148346e79, type: 3}
+      propertyPath: m_FollowOffset.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3270683371337291324, guid: a14986d1916980a44809387148346e79, type: 3}
+      propertyPath: m_FollowOffset.z
+      value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3609859644624250025, guid: a14986d1916980a44809387148346e79, type: 3}
+      propertyPath: m_FollowOffset.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3609859644624250025, guid: a14986d1916980a44809387148346e79, type: 3}
+      propertyPath: m_FollowOffset.z
+      value: -7
       objectReference: {fileID: 0}
     - target: {fileID: 6124294843758895387, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalRotation.w
@@ -658,11 +682,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8768492812042765644, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000008501525
+      value: -0.000000008501525
       objectReference: {fileID: 0}
     - target: {fileID: 8768492812042765644, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000013186965
+      value: 0.0000000013186965
+      objectReference: {fileID: 0}
+    - target: {fileID: 8979308566184540033, guid: a14986d1916980a44809387148346e79, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8979308566184540033, guid: a14986d1916980a44809387148346e79, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8979308566184540033, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalRotation.w
@@ -679,6 +711,14 @@ PrefabInstance:
     - target: {fileID: 8979308566184540033, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0.000000001468327
+      objectReference: {fileID: 0}
+    - target: {fileID: 9069719793018563525, guid: a14986d1916980a44809387148346e79, type: 3}
+      propertyPath: m_FollowOffset.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9069719793018563525, guid: a14986d1916980a44809387148346e79, type: 3}
+      propertyPath: m_FollowOffset.z
+      value: -7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
