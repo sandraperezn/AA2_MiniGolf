@@ -3,16 +3,10 @@ using UnityEngine;
 [RequireComponent(typeof(LineRenderer))]
 public class BallController : MonoBehaviour
 {
-    [Header("Player Input")]
-    public float forceMultiplier = 5f;
-    public float maxVelocity = 50f;
-    [Header("Friction")]
-    [Range(0f, 1f)]
-    public float surfaceFriction = 0.4f;
+    [Header("Friction"), Range(0f, 1f)] public float surfaceFriction = 0.4f;
 
+    private const float MaxVelocity = 50f;
     private Vector3 velocity;
-    private float ballRadius;
-    private float ballMass;
 
     private void Start()
     {
@@ -20,8 +14,6 @@ public class BallController : MonoBehaviour
         MeshFilter mf = GetComponent<MeshFilter>();
         float realRadius = mf.sharedMesh.bounds.extents.x * transform.localScale.x;
         PhysicsManager.Instance.ballRadius = realRadius;
-        ballRadius = PhysicsManager.Instance.ballRadius;
-        ballMass = PhysicsManager.Instance.ballMass;
     }
 
     private void Update()
@@ -30,8 +22,8 @@ public class BallController : MonoBehaviour
         PhysicsManager.Instance.ApplyPhysics(ref velocity);
 
         // 2) Limita magnitud
-        if (velocity.magnitude > maxVelocity)
-            velocity = velocity.normalized * maxVelocity;
+        if (velocity.magnitude > MaxVelocity)
+            velocity = velocity.normalized * MaxVelocity;
 
         // 3) Posición tentativa
         Vector3 currentPos = transform.position;
@@ -64,6 +56,7 @@ public class BallController : MonoBehaviour
                 if (Vector3.Dot(vH, fAcc) > 0f)
                     vH = Vector3.zero;
             }
+
             velocity.x = vH.x;
             velocity.z = vH.z;
 

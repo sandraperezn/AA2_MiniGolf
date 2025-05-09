@@ -31,4 +31,9 @@ public class CustomSphereCollider : CustomCollider
         penetration = 0f;
         return false;
     }
+
+    protected override void OnDrawGizmosInternal()
+    {
+        Gizmos.DrawWireSphere(transform.position, sphereRadius);
+    }
 }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8081149560178869771}
   - component: {fileID: 3662208681703161341}
+  - component: {fileID: 1845572698614556628}
   - component: {fileID: 1790970204843314577}
   - component: {fileID: 3787030242799572485}
   - component: {fileID: 3071183738414052297}
@@ -33,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3662208681703161341
 MonoBehaviour:
@@ -47,9 +48,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46eae8def9d20a146a83a6ea2940b122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceMultiplier: 1
-  maxVelocity: 50
   surfaceFriction: 0.4
+--- !u!114 &1845572698614556628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8145762635299387393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fda787d7155226741acf50814aa2dae9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forceMultiplier: 10
+  maxDragDistance: 500
+  maxPitchAngle: 60
+  trajectoryPoints: 30
+  timeStep: 0.1
 --- !u!33 &1790970204843314577
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -142,9 +158,7 @@ LineRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Positions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
+  m_Positions: []
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.5

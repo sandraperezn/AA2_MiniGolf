@@ -6,6 +6,8 @@ public class PhysicsManager : Singleton<PhysicsManager>
     public float gravity = 9.81f;
     public float airDensity = 1.225f;
     public float dragCoefficient = 0.47f;
+    
+    [Header("Ball Properties")]
     public float ballRadius = 0.5f;
     public float ballMass = 0.045f;
 

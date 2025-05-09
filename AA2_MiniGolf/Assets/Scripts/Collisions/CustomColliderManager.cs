@@ -3,12 +3,11 @@ using UnityEngine;
 
 public class CustomCollisionManager : Singleton<CustomCollisionManager>
 {
+    private readonly List<CustomCollider> colliders = new();
     public void Register(CustomCollider c) => colliders.Add(c);
     public void Unregister(CustomCollider c) => colliders.Remove(c);
 
-    private List<CustomCollider> colliders = new();
-
-    //Comprueba si una esfera (center, radius) choca con alguno de tus CustomCollider.
+    // Comprueba si una esfera (center, radius) choca con alguno de tus CustomCollider.
     // Devuelve el primero que choque, su normal y penetración.
     public bool CheckCollision(
         Vector3 center, float radius,
@@ -24,6 +23,7 @@ public class CustomCollisionManager : Singleton<CustomCollisionManager>
                 return true;
             }
         }
+
         hitCollider = null;
         normal = Vector3.zero;
         penetration = 0;

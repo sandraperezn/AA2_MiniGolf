@@ -6,7 +6,7 @@ public abstract class LevelLoader : MonoBehaviour
     public float winVelocityThreshold = 0.5f;
     public int maxBouncesAllowed = 2;
 
-    protected int bounceCount = 0;
+    private int bounceCount;
 
     protected virtual void Start()
     {

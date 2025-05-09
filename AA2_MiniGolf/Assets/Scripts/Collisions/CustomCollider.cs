@@ -11,6 +11,9 @@ public abstract class CustomCollider : MonoBehaviour
         out Vector3 collisionNormal,
         out float penetration);
 
+    // Método interno para dibujar gizmos específicos de cada collider
+    protected abstract void OnDrawGizmosInternal();
+
     private void OnEnable()
     {
         CustomCollisionManager.Instance.Register(this);
@@ -20,5 +23,11 @@ public abstract class CustomCollider : MonoBehaviour
     {
         if (!CustomCollisionManager.Instance) return;
         CustomCollisionManager.Instance.Unregister(this);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        OnDrawGizmosInternal();
     }
 }
