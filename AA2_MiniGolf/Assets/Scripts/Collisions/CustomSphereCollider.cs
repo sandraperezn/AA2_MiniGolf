@@ -7,8 +7,8 @@ public class CustomSphereCollider : CustomCollider
     public float sphereRadius = 0.5f;
 
     public override bool DetectCollision(
-        Vector3 sphereCenter,    // centro de la bola en movimiento
-        float movingRadius,      // radio de la bola en movimiento
+        Vector3 sphereCenter, // centro de la bola en movimiento
+        float movingRadius, // radio de la bola en movimiento
         out Vector3 collisionNormal,
         out float penetration)
     {

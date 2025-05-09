@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BallInputController : MonoBehaviour
 {
@@ -21,7 +19,7 @@ public class BallInputController : MonoBehaviour
         lineRenderer.enabled = false;
     }
 
-    void Update()
+    private void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {

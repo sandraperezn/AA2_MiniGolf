@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
-public class BallPhysicsController : MonoBehaviour
+public class BallController : MonoBehaviour
 {
     [Header("Player Input")]
     public float forceMultiplier = 5f;
@@ -14,10 +14,10 @@ public class BallPhysicsController : MonoBehaviour
     private float ballRadius;
     private float ballMass;
 
-    void Start()
+    private void Start()
     {
-        //Corrección del radio de la bola de golf 
-        var mf = GetComponent<MeshFilter>();
+        // Corrección del radio de la bola de golf 
+        MeshFilter mf = GetComponent<MeshFilter>();
         float realRadius = mf.sharedMesh.bounds.extents.x * transform.localScale.x;
         PhysicsManager.Instance.ballRadius = realRadius;
         ballRadius = PhysicsManager.Instance.ballRadius;
