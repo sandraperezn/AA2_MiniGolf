@@ -6,16 +6,15 @@ public class BallController : MonoBehaviour
     private const float MaxVelocity = 50f;
     private Vector3 velocity;
 
-    private void Start()
+    private void Awake()
     {
         // Corrección del radio de la bola de golf 
         MeshFilter mf = GetComponent<MeshFilter>();
         float realRadius = mf.sharedMesh.bounds.extents.x * transform.localScale.x;
         PhysicsManager.Instance.BallRadius = realRadius;
-        print(realRadius);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         // 1) Actualiza velocidad según físicas
         PhysicsManager.Instance.ApplyPhysics(ref velocity);
@@ -26,7 +25,7 @@ public class BallController : MonoBehaviour
 
         // 3) Posición tentativa
         Vector3 currentPos = transform.position;
-        Vector3 nextPos = currentPos + velocity * Time.deltaTime;
+        Vector3 nextPos = currentPos + velocity * Time.fixedDeltaTime;
 
         // 4) Comprobar colisión contra suelo u otros CustomCollider
         if (CustomCollisionManager.Instance.CheckCollision(
@@ -46,13 +45,13 @@ public class BallController : MonoBehaviour
 
             // Aplicar componente de pendiente y fricción en XZ
             Vector3 slope = Vector3.ProjectOnPlane(Vector3.down, normal).normalized;
-            velocity += PhysicsManager.Instance.gravity * Time.deltaTime * slope;
+            velocity += PhysicsManager.Instance.gravity * Time.fixedDeltaTime * slope;
 
             Vector3 vH = new(velocity.x, 0f, velocity.z);
             if (vH.magnitude > 0.01f)
             {
                 Vector3 fAcc = PhysicsManager.Instance.gravity * surfaceFriction * -vH.normalized;
-                vH += fAcc * Time.deltaTime;
+                vH += fAcc * Time.fixedDeltaTime;
                 if (Vector3.Dot(vH, fAcc) > 0f)
                     vH = Vector3.zero;
             }

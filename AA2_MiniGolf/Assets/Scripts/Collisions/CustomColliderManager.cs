@@ -22,6 +22,15 @@ public class CustomCollisionManager : Singleton<CustomCollisionManager>
             {
                 hitCollider = c;
                 surfaceFriction = c.SurfaceFriction;
+
+                // Si es un trigger, no colisiona, pero sí detecta
+                if (c.IsTrigger)
+                {
+                    c.OnTriggerEnterEvent?.Invoke();
+                    penetration = 0;
+                    normal = Vector3.zero;
+                }
+
                 return true;
             }
         }

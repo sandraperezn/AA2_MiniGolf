@@ -14,7 +14,7 @@ public class PhysicsManager : Singleton<PhysicsManager>
     public void ApplyPhysics(ref Vector3 velocity)
     {
         // Gravedad vertical
-        velocity.y -= gravity * Time.deltaTime;
+        velocity.y -= gravity * Time.fixedDeltaTime;
 
         // Resistencia del aire (opcional) en todo el espacio
         if (velocity.magnitude > 0f)

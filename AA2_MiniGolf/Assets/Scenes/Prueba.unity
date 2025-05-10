@@ -208,8 +208,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a9480fae1b98e44902c28bd3d8153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restitution: 0.8
-  surfaceFriction: 0.4
+  restitution: 0
+  surfaceFriction: 0.389
+  isTrigger: 0
 --- !u!108 &705507994 stripped
 Light:
   m_CorrespondingSourceObject: {fileID: 1882925684897132002, guid: a14986d1916980a44809387148346e79, type: 3}
@@ -313,6 +314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restitution: 0.8
   surfaceFriction: 0.4
+  isTrigger: 0
   planeNormal: {x: 0, y: 1, z: 0}
 --- !u!4 &1010716932 stripped
 Transform:
@@ -404,8 +406,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a9480fae1b98e44902c28bd3d8153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restitution: 0.8
-  surfaceFriction: 0.4
+  restitution: 0
+  surfaceFriction: 0.389
+  isTrigger: 0
 --- !u!1001 &1346143105
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -491,8 +494,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a9480fae1b98e44902c28bd3d8153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restitution: 0.8
-  surfaceFriction: 0.4
+  restitution: 0
+  surfaceFriction: 0.389
+  isTrigger: 0
 --- !u!1001 &1763776224
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -578,8 +582,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a9480fae1b98e44902c28bd3d8153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restitution: 0.8
-  surfaceFriction: 0.4
+  restitution: 0
+  surfaceFriction: 0.389
+  isTrigger: 0
 --- !u!1 &1927645965 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7938260189783475941, guid: a14986d1916980a44809387148346e79, type: 3}
@@ -608,6 +613,67 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!1 &2047106476
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2047106479}
+  - component: {fileID: 2047106478}
+  - component: {fileID: 2047106477}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2047106477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047106476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51db64fa687dec6428b18c056813d026, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2047106478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047106476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 202f4f34444f40f88afc6b2880293db8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  restitution: 0.8
+  surfaceFriction: 0.4
+  isTrigger: 1
+  sphereRadius: 0.23
+--- !u!4 &2047106479
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2047106476}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.377, y: 1.935, z: 3.586}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3563077817383039983
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -985,11 +1051,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8979308566184540033, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.0067931
+      value: 0.0067930664
       objectReference: {fileID: 0}
     - target: {fileID: 8979308566184540033, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0011766582
+      value: -0.0011766521
       objectReference: {fileID: 0}
     - target: {fileID: 9069719793018563525, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_FollowOffset.y

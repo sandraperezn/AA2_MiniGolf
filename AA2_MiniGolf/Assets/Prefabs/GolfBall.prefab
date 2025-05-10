@@ -61,11 +61,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceMultiplier: 0.025
-  maxDragDistance: 350
+  maxDragDistance: 300
   maxPitchAngle: 15
   trajectoryPoints: 30
   timeStep: 0.1
-  cam: {fileID: 0}
 --- !u!33 &1790970204843314577
 MeshFilter:
   m_ObjectHideFlags: 0

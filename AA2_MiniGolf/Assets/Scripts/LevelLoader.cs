@@ -1,35 +1,25 @@
 using UnityEngine;
 
-public abstract class LevelLoader : MonoBehaviour
+[RequireComponent(typeof(CustomCollider))]
+public class LevelLoader : MonoBehaviour
 {
-    [Header("Victory Conditions")]
-    public float winVelocityThreshold = 0.5f;
-    public int maxBouncesAllowed = 2;
+    private CustomCollider winTrigger;
 
-    private int bounceCount;
-
-    protected virtual void Start()
+    private void OnWinTriggerEnter()
     {
-        // Base config for level
+        print("collided with win trigger");
+        // TODO: Load the next level
     }
 
-    public abstract void LoadLevel();
+    private void Awake() => winTrigger = GetComponent<CustomCollider>();
 
-    public virtual void OnBallEnterGoal(Vector3 velocity)
+    private void OnEnable()
     {
-        if (velocity.magnitude < winVelocityThreshold && bounceCount <= maxBouncesAllowed)
-        {
-            Debug.Log("Level completed successfully!");
-            // Load next level or show victory screen if applicable
-        }
-        else
-        {
-            Debug.Log("Victory conditions not met. Too many bounces.");
-        }
+        winTrigger.OnTriggerEnterEvent += OnWinTriggerEnter;
     }
 
-    public void RegisterBounce()
+    private void OnDisable()
     {
-        bounceCount++;
+        winTrigger.OnTriggerEnterEvent -= OnWinTriggerEnter;
     }
 }
