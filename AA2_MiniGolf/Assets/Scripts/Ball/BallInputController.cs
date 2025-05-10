@@ -3,32 +3,26 @@
 [RequireComponent(typeof(LineRenderer))]
 public class BallInputController : MonoBehaviour
 {
-    [Header("Force & Drag")]
-    [Tooltip("Multiplica la distancia de drag para obtener la velocidad inicial.")]
-    public float forceMultiplier = 10f;
+    [Header("Force & Drag")] [Tooltip("Multiplica la distancia de drag para obtener la velocidad inicial.")]
+    public float forceMultiplier = 0.025f;
 
     [Tooltip("Distancia máxima en píxeles que cuenta para el drag.")]
-    public float maxDragDistance = 500f;
+    public float maxDragDistance = 350f;
 
-    [Header("Pitch Angle")]
-    [Tooltip("Ángulo máximo de elevación en grados.")]
-    public float maxPitchAngle = 60f;
+    [Header("Pitch & Yaw")] [Tooltip("Ángulo máximo de elevación en grados.")]
+    public float maxPitchAngle = 15f;
 
-    [Header("Trajectory")]
-    [Tooltip("Número de puntos para dibujar la parábola.")]
+    [Header("Trajectory")] [Tooltip("Número de puntos para dibujar la parábola.")]
     public int trajectoryPoints = 30;
 
     [Tooltip("Separación temporal entre puntos (en segundos).")]
     public float timeStep = 0.1f;
 
-    [Header("Camera")]
-    [Tooltip("Referencia a la cámara desde la que disparas.")]
-    public Camera cam;
-
     private LineRenderer lineRenderer;
+    private BallController ballController;
     private Vector2 dragStartScreen;
     private bool isDragging;
-    private Rigidbody rb;
+    private Camera mainCamera;
 
     private void Awake()
     {
@@ -37,75 +31,57 @@ public class BallInputController : MonoBehaviour
         lineRenderer.useWorldSpace = true;
         lineRenderer.enabled = false;
 
-        rb = GetComponent<Rigidbody>();
-        if (!rb)
-        {
-            rb = gameObject.AddComponent<Rigidbody>();
-            rb.mass = 0.045f; // masa bola de golf
-            rb.useGravity = true;
-        }
-
-        if (cam == null)
-            cam = Camera.main;  // referencia por defecto
-
+        ballController = GetComponent<BallController>();
+        mainCamera = Camera.main;
     }
 
     private void Update()
     {
-        // Inicia drag
+        // Al empezar el drag
         if (Input.GetMouseButtonDown(0))
         {
             isDragging = true;
             dragStartScreen = Input.mousePosition;
             lineRenderer.enabled = true;
         }
-        // Finaliza drag y dispara
+        // Al soltar: lanzamos la pelota
         else if (Input.GetMouseButtonUp(0) && isDragging)
         {
             isDragging = false;
             lineRenderer.enabled = false;
 
-            // --- cálculo de vector y fuerza (igual que antes) ---
+            // Calculamos fuerza y dirección
             Vector2 dragEnd = Input.mousePosition;
             Vector2 dragVec = dragStartScreen - dragEnd;
             float dragDist = Mathf.Min(dragVec.magnitude, maxDragDistance);
             float dragNorm = dragDist / maxDragDistance;
 
-            // Pitch
             float pitchDeg = maxPitchAngle * dragNorm;
-
-            // Yaw según drag
             float yawDeg = Mathf.Atan2(dragVec.x, dragVec.y) * Mathf.Rad2Deg;
 
-            // --- NUEVO: base de la dirección = la cámara proyectada al plano XZ ---
-            Vector3 camForwardXZ = Vector3
-                .ProjectOnPlane(cam.transform.forward, Vector3.up)
-                .normalized;
-
-            // rotamos ese forwardXZ con nuestro yaw del drag
+            // Base: proyección de la vista de la cámara en XZ
+            Vector3 baseDir = Vector3.ProjectOnPlane(mainCamera.transform.forward, Vector3.up).normalized;
             Quaternion yawRot = Quaternion.AngleAxis(yawDeg, Vector3.up);
-            Vector3 dirForward = yawRot * camForwardXZ;
+            Vector3 dirH = yawRot * baseDir;
 
-            // aplicamos pitch (mismo método que antes)
-            // giramos dirForward alrededor de su propio eje “right” horizontal
-            Vector3 rightAxis = Vector3.Cross(Vector3.up, dirForward).normalized;
-            Vector3 launchDir = Quaternion
-                .AngleAxis(-pitchDeg, rightAxis)
-                * dirForward;
+            // Aplicamos pitch girando sobre el eje “right”
+            Vector3 rightAxis = Vector3.Cross(Vector3.up, dirH).normalized;
+            Vector3 launchDir = Quaternion.AngleAxis(-pitchDeg, rightAxis) * dirH;
             launchDir.Normalize();
 
-            // velocidad final
             float speed = dragDist * forceMultiplier;
-            rb.velocity = launchDir * speed;
+
+            // Lanzamos la bola en la dirección calculada
+            ballController.Launch(launchDir * speed);
         }
 
-        // Mientras arrastras, dibuja la trayectoria con la misma lógica
         if (isDragging)
             DrawTrajectory();
     }
 
     private void DrawTrajectory()
     {
+        // Igual que antes, pero usando tu propia gravedad
         Vector2 mousePos = Input.mousePosition;
         Vector2 dragVec = dragStartScreen - mousePos;
         float dragDist = Mathf.Min(dragVec.magnitude, maxDragDistance);
@@ -114,29 +90,26 @@ public class BallInputController : MonoBehaviour
         float pitchDeg = maxPitchAngle * dragNorm;
         float yawDeg = Mathf.Atan2(dragVec.x, dragVec.y) * Mathf.Rad2Deg;
 
-        Vector3 camForwardXZ = Vector3
-            .ProjectOnPlane(cam.transform.forward, Vector3.up)
-            .normalized;
-
+        Vector3 baseDir = Vector3.ProjectOnPlane(mainCamera.transform.forward, Vector3.up).normalized;
         Quaternion yawRot = Quaternion.AngleAxis(yawDeg, Vector3.up);
-        Vector3 dirForward = yawRot * camForwardXZ;
-
-        Vector3 rightAxis = Vector3.Cross(Vector3.up, dirForward).normalized;
-        Vector3 launchDir = Quaternion
-            .AngleAxis(-pitchDeg, rightAxis)
-            * dirForward;
+        Vector3 dirH = yawRot * baseDir;
+        Vector3 rightAxis = Vector3.Cross(Vector3.up, dirH).normalized;
+        Vector3 launchDir = Quaternion.AngleAxis(-pitchDeg, rightAxis) * dirH;
         launchDir.Normalize();
 
         float speed = dragDist * forceMultiplier;
         Vector3 initVel = launchDir * speed;
 
         Vector3 startPos = transform.position;
+        float g = PhysicsManager.Instance.gravity;
+
         for (int i = 0; i < trajectoryPoints; i++)
         {
             float t = i * timeStep;
+            // s = p0 + v0*t + ½·(–g·up)·t²
             Vector3 point = startPos
-                + initVel * t
-                + Physics.gravity * (0.5f * t * t);
+                            + initVel * t
+                            - Vector3.up * (0.5f * g * t * t);
             lineRenderer.SetPosition(i, point);
         }
     }

@@ -48,7 +48,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46eae8def9d20a146a83a6ea2940b122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  surfaceFriction: 0.4
 --- !u!114 &1845572698614556628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,11 +60,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fda787d7155226741acf50814aa2dae9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceMultiplier: 10
-  maxDragDistance: 500
-  maxPitchAngle: 60
+  forceMultiplier: 0.025
+  maxDragDistance: 350
+  maxPitchAngle: 15
   trajectoryPoints: 30
   timeStep: 0.1
+  cam: {fileID: 0}
 --- !u!33 &1790970204843314577
 MeshFilter:
   m_ObjectHideFlags: 0

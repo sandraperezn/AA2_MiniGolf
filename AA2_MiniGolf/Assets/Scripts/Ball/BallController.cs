@@ -12,6 +12,7 @@ public class BallController : MonoBehaviour
         MeshFilter mf = GetComponent<MeshFilter>();
         float realRadius = mf.sharedMesh.bounds.extents.x * transform.localScale.x;
         PhysicsManager.Instance.BallRadius = realRadius;
+        print(realRadius);
     }
 
     private void Update()
@@ -69,5 +70,13 @@ public class BallController : MonoBehaviour
         {
             transform.position = nextPos;
         }
+    }
+
+    /// <summary>
+    /// Lanza la bola inicializando su velocidad interna
+    /// </summary>
+    public void Launch(Vector3 initialVelocity)
+    {
+        velocity = initialVelocity;
     }
 }
