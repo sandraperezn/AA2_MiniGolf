@@ -13,19 +13,22 @@ public class CustomCollisionManager : Singleton<CustomCollisionManager>
         Vector3 center, float radius,
         out CustomCollider hitCollider,
         out Vector3 normal,
-        out float penetration)
+        out float penetration,
+        out float surfaceFriction)
     {
         foreach (CustomCollider c in colliders)
         {
             if (c.DetectCollision(center, radius, out normal, out penetration))
             {
                 hitCollider = c;
+                surfaceFriction = c.SurfaceFriction;
                 return true;
             }
         }
 
         hitCollider = null;
         normal = Vector3.zero;
+        surfaceFriction = 0;
         penetration = 0;
         return false;
     }

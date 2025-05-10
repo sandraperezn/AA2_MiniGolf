@@ -3,6 +3,9 @@ using UnityEngine;
 public abstract class CustomCollider : MonoBehaviour
 {
     [Range(0f, 1f)] public float restitution = 0.8f; // coeficiente de restitución por collider
+    [SerializeField, Range(0f, 1f)] private float surfaceFriction = 0.4f;
+
+    public float SurfaceFriction => surfaceFriction;
 
     // Devuelve true si hay colisión, y te da la normal y penetración
     public abstract bool DetectCollision(
@@ -25,7 +28,7 @@ public abstract class CustomCollider : MonoBehaviour
         CustomCollisionManager.Instance.Unregister(this);
     }
 
-    private void OnDrawGizmos()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.green;
         OnDrawGizmosInternal();

@@ -3,8 +3,6 @@ using UnityEngine;
 [RequireComponent(typeof(LineRenderer))]
 public class BallController : MonoBehaviour
 {
-    [Header("Friction"), Range(0f, 1f)] public float surfaceFriction = 0.4f;
-
     private const float MaxVelocity = 50f;
     private Vector3 velocity;
 
@@ -35,7 +33,8 @@ public class BallController : MonoBehaviour
                 PhysicsManager.Instance.ballRadius,
                 out CustomCollider hitC,
                 out Vector3 normal,
-                out float penetration))
+                out float penetration,
+                out float surfaceFriction))
         {
             // Posicionar justo fuera del collider
             transform.position = nextPos + normal * (penetration + 0.001f);

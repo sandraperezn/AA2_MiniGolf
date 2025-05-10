@@ -205,7 +205,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 813560670}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 20, y: 0.2, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -225,6 +225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restitution: 0.8
+  surfaceFriction: 0.4
   planeNormal: {x: 0, y: 1, z: 0}
 --- !u!4 &1010716932 stripped
 Transform:
@@ -604,11 +605,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8768492812042765644, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000008501525
+      value: -0.000000008501525
       objectReference: {fileID: 0}
     - target: {fileID: 8768492812042765644, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000013186965
+      value: 0.0000000013186965
       objectReference: {fileID: 0}
     - target: {fileID: 8979308566184540033, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalPosition.y
@@ -628,11 +629,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8979308566184540033, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000008476966
+      value: -0.000000008476963
       objectReference: {fileID: 0}
     - target: {fileID: 8979308566184540033, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000001468327
+      value: 0.0000000014683269
       objectReference: {fileID: 0}
     - target: {fileID: 9069719793018563525, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_FollowOffset.y
