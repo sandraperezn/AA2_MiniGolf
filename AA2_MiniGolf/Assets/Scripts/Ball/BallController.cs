@@ -11,7 +11,7 @@ public class BallController : MonoBehaviour
         // Corrección del radio de la bola de golf 
         MeshFilter mf = GetComponent<MeshFilter>();
         float realRadius = mf.sharedMesh.bounds.extents.x * transform.localScale.x;
-        PhysicsManager.Instance.ballRadius = realRadius;
+        PhysicsManager.Instance.BallRadius = realRadius;
     }
 
     private void Update()
@@ -30,7 +30,7 @@ public class BallController : MonoBehaviour
         // 4) Comprobar colisión contra suelo u otros CustomCollider
         if (CustomCollisionManager.Instance.CheckCollision(
                 nextPos,
-                PhysicsManager.Instance.ballRadius,
+                PhysicsManager.Instance.BallRadius,
                 out CustomCollider hitC,
                 out Vector3 normal,
                 out float penetration,

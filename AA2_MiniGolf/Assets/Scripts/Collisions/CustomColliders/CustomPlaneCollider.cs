@@ -26,7 +26,7 @@ public class CustomPlaneCollider : CustomCollider
             // 3) Punto de proyección sobre el plano
             Vector3 pointOnPlane = sphereCenter - n * d;
 
-            // 4) Coords en espacio local (incluye escala)  
+            // 4) Coords en espacio local (incluye escala)
             Vector3 local = transform.InverseTransformPoint(pointOnPlane);
 
             // 5) Extents *no* escalados (bounds están en unidades de malla)

@@ -47,5 +47,4 @@ MonoBehaviour:
   gravity: 9.81
   airDensity: 1.225
   dragCoefficient: 0.47
-  ballRadius: 0.5
-  ballMass: 1
+  ballMass: 0.1
