@@ -98,11 +98,14 @@ namespace Ball
             transform.position = currentCenter - WorldCenterOffset;
         }
 
-        // Called by your input code to launch the ball.
         public void Launch(Vector3 initialVelocity)
         {
             velocity = initialVelocity;
-            AudioManager.Instance.PlaySfx(AudioManager.SfxType.Shoot);
+
+            if (AudioManager.Instance)
+            {
+                AudioManager.Instance.PlaySfx(AudioManager.SfxType.Shoot);
+            }
         }
     }
 }

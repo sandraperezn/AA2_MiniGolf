@@ -9,21 +9,20 @@ namespace Collisions
         public float sphereRadius = 0.5f;
 
         public override bool DetectCollision(
-            Vector3 sphereCenter, // centro de la bola en movimiento
-            float movingRadius, // radio de la bola en movimiento
+            Vector3 sphereCenter,
+            float movingRadius,
             out Vector3 collisionNormal,
             out float penetration)
         {
-            // Centro de esta esfera estática
             Vector3 center = transform.position;
 
-            // Suma de radios para detección
+            // Sum of the radii for collision detection
             float sumR = sphereRadius + movingRadius;
             float dist = Vector3.Distance(sphereCenter, center);
 
             if (dist < sumR)
             {
-                // Normal desde la superficie de este collider hacia la bola
+                // Normal from surface to the sphere
                 collisionNormal = (sphereCenter - center).normalized;
                 penetration = sumR - dist;
                 return true;

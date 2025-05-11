@@ -5,18 +5,15 @@ namespace Ball
     [RequireComponent(typeof(LineRenderer))]
     public class BallInputController : MonoBehaviour
     {
-        [Header("Force & Drag"), SerializeField]
-        private float forceMultiplier = 0.025f;
+        [SerializeField] private float forceMultiplier = 0.025f;
 
-        [Tooltip("Distancia máxima en píxeles que cuenta para el drag.")]
-        public float maxDragDistance = 350f;
+        [Tooltip("Max distance for dragging (pixels)"), SerializeField]
+        private float maxDragDistance = 350f;
 
-        [Header("Pitch & Yaw")] [Tooltip("Ángulo máximo de elevación en grados.")]
-        public float maxPitchAngle = 15f;
+        [Tooltip("Max pitch of the trajectory (degrees)"), SerializeField]
+        private float maxPitchAngle = 15f;
 
-        [Header("Trajectory")] [Tooltip("Número de puntos para dibujar la parábola.")]
-        public int trajectoryPoints = 30;
-
+        private const int TrajectoryPoints = 30;
         private LineRenderer lineRenderer;
         private BallController ballController;
         private Vector2 dragStartScreen;
@@ -26,7 +23,7 @@ namespace Ball
         private void Awake()
         {
             lineRenderer = GetComponent<LineRenderer>();
-            lineRenderer.positionCount = trajectoryPoints;
+            lineRenderer.positionCount = TrajectoryPoints;
             lineRenderer.useWorldSpace = true;
             lineRenderer.enabled = false;
 
@@ -36,20 +33,21 @@ namespace Ball
 
         private void Update()
         {
-            // Al empezar el drag
+            // Drag begins
             if (Input.GetMouseButtonDown(0))
             {
                 isDragging = true;
                 dragStartScreen = Input.mousePosition;
                 lineRenderer.enabled = true;
             }
-            // Al soltar: lanzamos la pelota
+
+            //  Drag released
             else if (Input.GetMouseButtonUp(0) && isDragging)
             {
                 isDragging = false;
                 lineRenderer.enabled = false;
 
-                // Calculamos fuerza y dirección
+                // Calculate force and direction
                 Vector2 dragEnd = Input.mousePosition;
                 Vector2 dragVec = dragStartScreen - dragEnd;
                 float dragDist = Mathf.Min(dragVec.magnitude, maxDragDistance);
@@ -58,29 +56,30 @@ namespace Ball
                 float pitchDeg = maxPitchAngle * dragNorm;
                 float yawDeg = Mathf.Atan2(dragVec.x, dragVec.y) * Mathf.Rad2Deg;
 
-                // Base: proyección de la vista de la cámara en XZ
+                // Base direction: project camera view on XZ plane
                 Vector3 baseDir = Vector3.ProjectOnPlane(mainCamera.transform.forward, Vector3.up).normalized;
                 Quaternion yawRot = Quaternion.AngleAxis(yawDeg, Vector3.up);
                 Vector3 dirH = yawRot * baseDir;
 
-                // Aplicamos pitch girando sobre el eje “right”
+                // Apply pitch by rotating around the “right” axis
                 Vector3 rightAxis = Vector3.Cross(Vector3.up, dirH).normalized;
                 Vector3 launchDir = Quaternion.AngleAxis(-pitchDeg, rightAxis) * dirH;
                 launchDir.Normalize();
 
                 float speed = dragDist * forceMultiplier;
 
-                // Lanzamos la bola en la dirección calculada
+                // Launch the ball in the calculated direction
                 ballController.Launch(launchDir * speed);
             }
 
             if (isDragging)
+            {
                 DrawTrajectory();
+            }
         }
 
         private void DrawTrajectory()
         {
-            // Igual que antes, pero usando tu propia gravedad
             Vector2 mousePos = Input.mousePosition;
             Vector2 dragVec = dragStartScreen - mousePos;
             float dragDist = Mathf.Min(dragVec.magnitude, maxDragDistance);
@@ -103,7 +102,7 @@ namespace Ball
 
             const float g = PhysicsManager.Gravity;
             const float timeStep = 0.1f;
-            for (int i = 0; i < trajectoryPoints; i++)
+            for (int i = 0; i < TrajectoryPoints; i++)
             {
                 float t = i * timeStep;
                 // s = p0 + v0*t + ½·(–g·up)·t²

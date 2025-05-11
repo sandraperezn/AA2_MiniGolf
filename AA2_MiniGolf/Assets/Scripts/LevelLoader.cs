@@ -1,3 +1,4 @@
+using System.Collections;
 using Collisions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,16 +9,18 @@ public class LevelLoader : MonoBehaviour
 {
     private CustomCollider winTrigger;
 
-    private static void OnWinTriggerEnter()
+    private void OnWinTriggerEnter()
     {
         if (PhysicsManager.Instance.BallVelocity.magnitude < 5f)
         {
-            Win();
+            StartCoroutine(Win());
         }
     }
 
-    private static void Win()
+    private IEnumerator Win()
     {
+        yield return new WaitForSeconds(1f);
+
         if (AudioManager.Instance)
         {
             AudioManager.Instance.PlaySfx(AudioManager.SfxType.Goal);
