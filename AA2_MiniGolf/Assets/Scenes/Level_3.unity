@@ -2202,7 +2202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a9480fae1b98e44902c28bd3d8153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restitution: 0.8
+  restitution: 1
   surfaceFriction: 0.4
   isTrigger: 0
 --- !u!1001 &819669213
@@ -2703,7 +2703,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a9480fae1b98e44902c28bd3d8153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restitution: 0.8
+  restitution: 1
   surfaceFriction: 0.4
   isTrigger: 0
 --- !u!1001 &971966767
@@ -3470,11 +3470,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6124294843758895387, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000008489578
+      value: -0.000000008489578
       objectReference: {fileID: 0}
     - target: {fileID: 6124294843758895387, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000013935424
+      value: 0.0000000013935424
       objectReference: {fileID: 0}
     - target: {fileID: 6520011171328229782, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3502,11 +3502,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6539953815307983687, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000016979158
+      value: -0.000000016979158
       objectReference: {fileID: 0}
     - target: {fileID: 6539953815307983687, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000027870857
+      value: 0.0000000027870857
       objectReference: {fileID: 0}
     - target: {fileID: 8764478876562174420, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_Name
