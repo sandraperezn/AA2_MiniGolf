@@ -1,5 +1,7 @@
+using Collisions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Utils;
 
 [RequireComponent(typeof(CustomCollider))]
 public class LevelLoader : MonoBehaviour
@@ -8,7 +10,6 @@ public class LevelLoader : MonoBehaviour
 
     private static void OnWinTriggerEnter()
     {
-        print("win");
         if (PhysicsManager.Instance.BallVelocity.magnitude < 5f)
         {
             Win();

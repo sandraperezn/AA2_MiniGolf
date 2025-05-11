@@ -1,11 +1,14 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+namespace Utils
 {
-    public void PlayGame()
+    public class MainMenu : MonoBehaviour
     {
-        int sceneToLoadIndex = SceneManager.GetActiveScene().buildIndex + 1;
-        SceneManager.LoadScene(sceneToLoadIndex);
+        public void PlayGame()
+        {
+            int sceneToLoadIndex = SceneManager.GetActiveScene().buildIndex + 1;
+            SceneManager.LoadScene(sceneToLoadIndex);
+        }
     }
 }

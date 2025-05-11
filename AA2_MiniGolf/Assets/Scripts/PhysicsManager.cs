@@ -1,4 +1,5 @@
 using UnityEngine;
+using Utils;
 
 public class PhysicsManager : Singleton<PhysicsManager>
 {
@@ -10,8 +11,8 @@ public class PhysicsManager : Singleton<PhysicsManager>
 
     #endregion
 
-    [Header("Ball Properties"), SerializeField]
-    private float ballMass = 0.1f;
+    [Header("Ball Properties")]
+    public float ballMass = 0.1f;
 
     public float BallRadius { get; set; }
     public Vector3 BallVelocity { get; private set; }

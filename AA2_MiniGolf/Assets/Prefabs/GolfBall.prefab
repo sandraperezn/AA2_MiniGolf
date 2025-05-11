@@ -63,8 +63,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceMultiplier: 0.025
-  maxDragDistance: 300
-  maxPitchAngle: 15
+  maxDragDistance: 200
+  maxPitchAngle: 30
   trajectoryPoints: 30
 --- !u!33 &1790970204843314577
 MeshFilter:

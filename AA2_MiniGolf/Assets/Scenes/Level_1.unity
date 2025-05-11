@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: f12eea462a74dfe4a99130b04c1c8977, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -440,14 +440,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1845572698614556628, guid: 9908d6584850b40439e581dafbf65817, type: 3}
-      propertyPath: maxPitchAngle
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 1845572698614556628, guid: 9908d6584850b40439e581dafbf65817, type: 3}
-      propertyPath: maxDragDistance
-      value: 200
-      objectReference: {fileID: 0}
     - target: {fileID: 3071183738414052297, guid: 9908d6584850b40439e581dafbf65817, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1783,7 +1775,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e0df54b3cf2f04d4bb292b9640f4ef01, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.5107365
+      value: -1.51
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e0df54b3cf2f04d4bb292b9640f4ef01, type: 3}
       propertyPath: m_LocalRotation.w

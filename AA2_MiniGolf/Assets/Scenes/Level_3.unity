@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.31293982, g: 0.29358435, b: 0.5140297, a: 1}
+  m_IndirectSpecularColor: {r: 0.3128686, g: 0.29350835, b: 0.5139649, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -939,6 +939,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: sand
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9b5d1e727d49e49489982a4343a4ad4d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1305,6 +1309,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9b5d1e727d49e49489982a4343a4ad4d, type: 3}
       propertyPath: m_Name
       value: barrier_1x1x1_yellow (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9b5d1e727d49e49489982a4343a4ad4d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2269,6 +2277,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: barrier_1x1x1_yellow (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9b5d1e727d49e49489982a4343a4ad4d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3085,6 +3097,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: barrier_1x1x1_yellow (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9b5d1e727d49e49489982a4343a4ad4d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3502,11 +3518,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8768492812042765644, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000019009985
+      value: 0.000000019009988
       objectReference: {fileID: 0}
     - target: {fileID: 8768492812042765644, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000029486942
+      value: -0.0000000029486948
       objectReference: {fileID: 0}
     - target: {fileID: 8979308566184540033, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3526,11 +3542,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8979308566184540033, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000008476961
+      value: -0.000000008476964
       objectReference: {fileID: 0}
     - target: {fileID: 8979308566184540033, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000014683265
+      value: 0.0000000014683266
       objectReference: {fileID: 0}
     - target: {fileID: 9069719793018563525, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_FollowOffset.y
@@ -3744,6 +3760,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: barrier_1x1x1_yellow (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9b5d1e727d49e49489982a4343a4ad4d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3848,6 +3868,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a5d023b0a619f6242986a25c651a4b61, type: 3}
       propertyPath: m_Name
       value: flag-blue
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a5d023b0a619f6242986a25c651a4b61, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4046,6 +4070,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9b5d1e727d49e49489982a4343a4ad4d, type: 3}
       propertyPath: m_Name
       value: barrier_1x1x1_yellow (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9b5d1e727d49e49489982a4343a4ad4d, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

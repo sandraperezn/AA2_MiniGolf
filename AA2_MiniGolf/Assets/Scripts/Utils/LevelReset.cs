@@ -1,22 +1,26 @@
+using Collisions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-[RequireComponent(typeof(CustomCollider))]
-public class LevelReset : MonoBehaviour
+namespace Utils
 {
-    private CustomCollider triggerCollider;
-
-    private void Awake()
+    [RequireComponent(typeof(CustomCollider))]
+    public class LevelReset : MonoBehaviour
     {
-        triggerCollider = GetComponent<CustomCollider>();
-    }
+        private CustomCollider triggerCollider;
 
-    private static void OnLevelReset()
-    {
-        Scene sceneToLoad = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(sceneToLoad.buildIndex);
-    }
+        private void Awake()
+        {
+            triggerCollider = GetComponent<CustomCollider>();
+        }
 
-    private void OnEnable() => triggerCollider.OnTriggerEnterEvent += OnLevelReset;
-    private void OnDisable() => triggerCollider.OnTriggerEnterEvent -= OnLevelReset;
+        private static void OnLevelReset()
+        {
+            Scene sceneToLoad = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(sceneToLoad.buildIndex);
+        }
+
+        private void OnEnable() => triggerCollider.OnTriggerEnterEvent += OnLevelReset;
+        private void OnDisable() => triggerCollider.OnTriggerEnterEvent -= OnLevelReset;
+    }
 }

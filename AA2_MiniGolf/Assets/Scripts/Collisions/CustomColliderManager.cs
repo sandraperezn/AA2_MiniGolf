@@ -1,45 +1,49 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Utils;
 
-public class CustomCollisionManager : Singleton<CustomCollisionManager>
+namespace Collisions
 {
-    private readonly List<CustomCollider> colliders = new();
-    public void Register(CustomCollider c) => colliders.Add(c);
-    public void Unregister(CustomCollider c) => colliders.Remove(c);
-
-    // Check if a sphere (center, radius) collides with a registered CustomCollider
-    // Returns the first collision, its normal and penetration
-    public bool CheckCollision(
-        Vector3 center, float radius,
-        out CustomCollider hitCollider,
-        out Vector3 normal,
-        out float penetration,
-        out float surfaceFriction)
+    public class CustomCollisionManager : Singleton<CustomCollisionManager>
     {
-        foreach (CustomCollider c in colliders)
+        private readonly List<CustomCollider> colliders = new();
+        public void Register(CustomCollider c) => colliders.Add(c);
+        public void Unregister(CustomCollider c) => colliders.Remove(c);
+
+        // Check if a sphere (center, radius) collides with a registered CustomCollider
+        // Returns the first collision, its normal and penetration
+        public bool CheckCollision(
+            Vector3 center, float radius,
+            out CustomCollider hitCollider,
+            out Vector3 normal,
+            out float penetration,
+            out float surfaceFriction)
         {
-            if (c.DetectCollision(center, radius, out normal, out penetration))
+            foreach (CustomCollider c in colliders)
             {
-                hitCollider = c;
-                surfaceFriction = c.SurfaceFriction;
-
-                // If is a trigger, detect but don't collide
-                if (c.IsTrigger)
+                if (c.DetectCollision(center, radius, out normal, out penetration))
                 {
-                    c.OnTriggerEnterEvent?.Invoke();
-                    penetration = 0;
-                    normal = Vector3.zero;
-                    return false;
+                    hitCollider = c;
+                    surfaceFriction = c.SurfaceFriction;
+
+                    // If is a trigger, detect but don't collide
+                    if (c.IsTrigger)
+                    {
+                        c.OnTriggerEnterEvent?.Invoke();
+                        penetration = 0;
+                        normal = Vector3.zero;
+                        return false;
+                    }
+
+                    return true;
                 }
-
-                return true;
             }
-        }
 
-        hitCollider = null;
-        normal = Vector3.zero;
-        surfaceFriction = 0;
-        penetration = 0;
-        return false;
+            hitCollider = null;
+            normal = Vector3.zero;
+            surfaceFriction = 0;
+            penetration = 0;
+            return false;
+        }
     }
 }

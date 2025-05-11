@@ -1,30 +1,33 @@
 using UnityEngine;
 
-public class Singleton<T> : MonoBehaviour
-    where T : Component
+namespace Utils
 {
-    private static T _instance;
-
-    public static T Instance
+    public class Singleton<T> : MonoBehaviour
+        where T : Component
     {
-        get
+        private static T _instance;
+
+        public static T Instance
         {
-            if (_instance) return _instance;
-
-            // Find existing instances
-            if (FindObjectsOfType(typeof(T)) is T[] { Length: > 0 } objs)
+            get
             {
-                _instance = objs[0];
+                if (_instance) return _instance;
 
-                if (objs is { Length: > 1 })
+                // Find existing instances
+                if (FindObjectsOfType(typeof(T)) is T[] { Length: > 0 } objs)
                 {
-                    Debug.LogError("There is more than one " + typeof(T).Name + " in the scene.");
+                    _instance = objs[0];
+
+                    if (objs is { Length: > 1 })
+                    {
+                        Debug.LogError("There is more than one " + typeof(T).Name + " in the scene.");
+                    }
+
+                    return _instance;
                 }
 
-                return _instance;
+                return null;
             }
-
-            return null;
         }
     }
 }

@@ -1,23 +1,26 @@
-using UnityEngine;
 using Cinemachine;
+using UnityEngine;
 
-public class CameraZoom : MonoBehaviour
+namespace Camera
 {
-    public CinemachineFreeLook freeLookCamera;
-    public float zoomSpeed = 5f;
-    public float minRadius = 5f;
-    public float maxRadius = 20f;
-
-    private void Update()
+    public class CameraZoom : MonoBehaviour
     {
-        float scroll = Input.GetAxis("Mouse ScrollWheel");
-        if (scroll != 0f)
+        public CinemachineFreeLook freeLookCamera;
+        public float zoomSpeed = 5f;
+        public float minRadius = 5f;
+        public float maxRadius = 20f;
+
+        private void Update()
         {
-            for (int i = 0; i < 3; i++)
+            float scroll = Input.GetAxis("Mouse ScrollWheel");
+            if (scroll != 0f)
             {
-                float newRadius = freeLookCamera.m_Orbits[i].m_Radius - scroll * zoomSpeed;
-                newRadius = Mathf.Clamp(newRadius, minRadius, maxRadius);
-                freeLookCamera.m_Orbits[i].m_Radius = newRadius;
+                for (int i = 0; i < 3; i++)
+                {
+                    float newRadius = freeLookCamera.m_Orbits[i].m_Radius - scroll * zoomSpeed;
+                    newRadius = Mathf.Clamp(newRadius, minRadius, maxRadius);
+                    freeLookCamera.m_Orbits[i].m_Radius = newRadius;
+                }
             }
         }
     }
