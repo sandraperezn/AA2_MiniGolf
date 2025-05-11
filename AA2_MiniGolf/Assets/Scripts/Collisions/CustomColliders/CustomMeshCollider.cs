@@ -1,18 +1,14 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(MeshFilter))]
 public class CustomMeshCollider : CustomCollider
 {
-    [Header("Hole Triangles")] [Tooltip("Indices of triangles to skip (e.g. holes).")] [SerializeField]
-    private List<int> holeTriangles = new List<int>();
-
     private Vector3[] worldVerts;
     private int[] tris;
 
     private void Awake()
     {
-        // Cache triangles & world-space verts once (static geometry)
+        // Cache triangles and world-space verts once (static geometry)
         MeshFilter mf = GetComponent<MeshFilter>();
         Mesh mesh = mf.sharedMesh;
         tris = mesh.triangles;
@@ -20,7 +16,9 @@ public class CustomMeshCollider : CustomCollider
         Vector3[] local = mesh.vertices;
         worldVerts = new Vector3[local.Length];
         for (int i = 0; i < local.Length; i++)
+        {
             worldVerts[i] = transform.TransformPoint(local[i]);
+        }
     }
 
     public override bool DetectCollision(
@@ -33,33 +31,29 @@ public class CustomMeshCollider : CustomCollider
         penetration = 0f;
 
         // Brute-force every triangle
-        for (int i = 0, triIdx = 0; i < tris.Length; i += 3, triIdx++)
+        for (int i = 0; i < tris.Length; i += 3)
         {
-            // 1) Skip hole tris
-            if (holeTriangles.Contains(triIdx))
-                continue;
+            // 1) Get the three world-space vertices
+            Vector3 a = worldVerts[tris[i]];
+            Vector3 b = worldVerts[tris[i + 1]];
+            Vector3 c = worldVerts[tris[i + 2]];
 
-            // 2) Get the three world-space vertices
-            Vector3 A = worldVerts[tris[i]];
-            Vector3 B = worldVerts[tris[i + 1]];
-            Vector3 C = worldVerts[tris[i + 2]];
+            // 2) Plane test: project sphereCenter onto triangle plane
+            Vector3 n = Vector3.Cross(b - a, c - a).normalized;
+            float d = Vector3.Dot(sphereCenter - a, n);
+            if (Mathf.Abs(d) > sphereRadius) continue; // too far from this plane
 
-            // 3) Plane test: project sphereCenter onto triangle plane
-            Vector3 n = Vector3.Cross(B - A, C - A).normalized;
-            float d = Vector3.Dot(sphereCenter - A, n);
-            if (Mathf.Abs(d) > sphereRadius)
-                continue; // too far from this plane
+            Vector3 p = sphereCenter - n * d;
 
-            Vector3 P = sphereCenter - n * d;
+            // 3) Point-in-triangle test (barycentric method)
+            if (!IsPointInTriangle(p, a, b, c)) continue;
 
-            // 4) Point-in-triangle test (barycentric method)
-            if (!IsPointInTriangle(P, A, B, C))
-                continue;
-
-            // 5) We have a hit — immediately return
+            // 4) We have a hit — immediately return
             //    Ensure normal points *out* of the mesh toward the sphere
-            if (Vector3.Dot(sphereCenter - P, n) < 0f)
+            if (Vector3.Dot(sphereCenter - p, n) < 0f)
+            {
                 n = -n;
+            }
 
             collisionNormal = n;
             penetration = sphereRadius - Mathf.Abs(d);
@@ -69,8 +63,8 @@ public class CustomMeshCollider : CustomCollider
         return false;
     }
 
-    // Barycentric coordinate test, identical to your friend's:
-    private bool IsPointInTriangle(
+    // Barycentric coordinate test
+    private static bool IsPointInTriangle(
         Vector3 p, Vector3 a, Vector3 b, Vector3 c)
     {
         Vector3 v0 = c - a;
@@ -89,11 +83,22 @@ public class CustomMeshCollider : CustomCollider
         float u = (d11 * d20 - d01 * d21) / denom;
         float v = (d00 * d21 - d01 * d20) / denom;
 
-        return (u >= 0f) && (v >= 0f) && (u + v <= 1f);
+        return u >= 0f && v >= 0f && u + v <= 1f;
     }
 
-    // No extra gizmos by default
     protected override void OnDrawGizmosInternal()
     {
+        // Draw the mesh collider as a wireframe
+        Gizmos.color = Color.yellow;
+        for (int i = 0; i < tris.Length; i += 3)
+        {
+            Vector3 a = worldVerts[tris[i]];
+            Vector3 b = worldVerts[tris[i + 1]];
+            Vector3 c = worldVerts[tris[i + 2]];
+
+            Gizmos.DrawLine(a, b);
+            Gizmos.DrawLine(b, c);
+            Gizmos.DrawLine(c, a);
+        }
     }
 }
