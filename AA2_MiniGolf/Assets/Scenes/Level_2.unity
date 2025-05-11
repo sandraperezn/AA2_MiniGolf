@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3128686, g: 0.29350835, b: 0.5139649, a: 1}
+  m_IndirectSpecularColor: {r: 0.31293982, g: 0.29358435, b: 0.5140297, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a9480fae1b98e44902c28bd3d8153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restitution: 0.8
+  restitution: 0.5
   surfaceFriction: 0.4
   isTrigger: 0
 --- !u!1001 &25913120
@@ -238,7 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a9480fae1b98e44902c28bd3d8153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restitution: 0.8
+  restitution: 0.5
   surfaceFriction: 0.6
   isTrigger: 0
 --- !u!1 &63610710 stripped
@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a9480fae1b98e44902c28bd3d8153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restitution: 0.8
+  restitution: 0.5
   surfaceFriction: 0.4
   isTrigger: 0
 --- !u!1001 &183456588
@@ -356,7 +356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a9480fae1b98e44902c28bd3d8153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restitution: 0.8
+  restitution: 0.5
   surfaceFriction: 0.4
   isTrigger: 0
 --- !u!1001 &245463333
@@ -519,7 +519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a9480fae1b98e44902c28bd3d8153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restitution: 0.8
+  restitution: 0.5
   surfaceFriction: 0.4
   isTrigger: 0
 --- !u!1001 &327382542
@@ -680,7 +680,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a9480fae1b98e44902c28bd3d8153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restitution: 0.8
+  restitution: 0.5
   surfaceFriction: 0.4
   isTrigger: 0
 --- !u!1 &483761245 stripped
@@ -705,7 +705,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a9480fae1b98e44902c28bd3d8153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restitution: 0.8
+  restitution: 0.5
   surfaceFriction: 0.4
   isTrigger: 0
 --- !u!1 &492975093 stripped
@@ -915,7 +915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a9480fae1b98e44902c28bd3d8153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restitution: 0.8
+  restitution: 0.5
   surfaceFriction: 0.4
   isTrigger: 0
 --- !u!1001 &551402321
@@ -1008,7 +1008,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a9480fae1b98e44902c28bd3d8153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restitution: 0.8
+  restitution: 0.5
   surfaceFriction: 0.4
   isTrigger: 0
 --- !u!1 &676387684 stripped
@@ -1033,8 +1033,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a9480fae1b98e44902c28bd3d8153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restitution: 0.8
-  surfaceFriction: 0.4
+  restitution: 0.5
+  surfaceFriction: 0.6
   isTrigger: 0
 --- !u!1001 &703395610
 PrefabInstance:
@@ -1461,7 +1461,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a9480fae1b98e44902c28bd3d8153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restitution: 0.8
+  restitution: 0.5
   surfaceFriction: 0.4
   isTrigger: 0
 --- !u!1 &807330636 stripped
@@ -1486,7 +1486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a9480fae1b98e44902c28bd3d8153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restitution: 0.8
+  restitution: 0.5
   surfaceFriction: 0.4
   isTrigger: 0
 --- !u!1 &823172337 stripped
@@ -1511,7 +1511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a9480fae1b98e44902c28bd3d8153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restitution: 0.8
+  restitution: 0.5
   surfaceFriction: 0.4
   isTrigger: 0
 --- !u!1001 &826528376
@@ -1714,7 +1714,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a9480fae1b98e44902c28bd3d8153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restitution: 0.8
+  restitution: 0.5
   surfaceFriction: 0.4
   isTrigger: 0
 --- !u!1001 &878796002
@@ -1800,7 +1800,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a9480fae1b98e44902c28bd3d8153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restitution: 0.8
+  restitution: 0.5
   surfaceFriction: 0.4
   isTrigger: 0
 --- !u!1 &939265125 stripped
@@ -1825,7 +1825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a9480fae1b98e44902c28bd3d8153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restitution: 0.8
+  restitution: 0.5
   surfaceFriction: 0.4
   isTrigger: 0
 --- !u!1001 &940286520
@@ -1918,7 +1918,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a9480fae1b98e44902c28bd3d8153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restitution: 0.8
+  restitution: 0.5
   surfaceFriction: 0.4
   isTrigger: 0
 --- !u!1 &1087108874 stripped
@@ -1943,7 +1943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a9480fae1b98e44902c28bd3d8153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restitution: 0.8
+  restitution: 0.5
   surfaceFriction: 0.2
   isTrigger: 0
 --- !u!1001 &1092735585
@@ -2104,7 +2104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a9480fae1b98e44902c28bd3d8153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restitution: 0.8
+  restitution: 0.5
   surfaceFriction: 0.4
   isTrigger: 0
 --- !u!1 &1186194672 stripped
@@ -2129,7 +2129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a9480fae1b98e44902c28bd3d8153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restitution: 0.8
+  restitution: 0.5
   surfaceFriction: 0.4
   isTrigger: 0
 --- !u!1 &1200028858
@@ -2288,7 +2288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a9480fae1b98e44902c28bd3d8153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restitution: 0.8
+  restitution: 0.5
   surfaceFriction: 0.4
   isTrigger: 0
 --- !u!1001 &1257029335
@@ -2381,7 +2381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a9480fae1b98e44902c28bd3d8153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restitution: 0.8
+  restitution: 0.5
   surfaceFriction: 0.4
   isTrigger: 0
 --- !u!1 &1324852471 stripped
@@ -2406,7 +2406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a9480fae1b98e44902c28bd3d8153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restitution: 0.8
+  restitution: 0.5
   surfaceFriction: 0.4
   isTrigger: 0
 --- !u!1 &1334457324 stripped
@@ -2431,7 +2431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a9480fae1b98e44902c28bd3d8153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restitution: 0.8
+  restitution: 0.5
   surfaceFriction: 0.4
   isTrigger: 0
 --- !u!1 &1399739829 stripped
@@ -2456,7 +2456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a9480fae1b98e44902c28bd3d8153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restitution: 0.8
+  restitution: 0.5
   surfaceFriction: 0.4
   isTrigger: 0
 --- !u!1001 &1475642522
@@ -2557,11 +2557,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6124294843758895387, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000008489578
+      value: 0.000000008489578
       objectReference: {fileID: 0}
     - target: {fileID: 6124294843758895387, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000013935424
+      value: -0.0000000013935424
       objectReference: {fileID: 0}
     - target: {fileID: 6520011171328229782, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2589,11 +2589,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6539953815307983687, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000016979158
+      value: 0.000000016979158
       objectReference: {fileID: 0}
     - target: {fileID: 6539953815307983687, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000027870857
+      value: -0.0000000027870857
       objectReference: {fileID: 0}
     - target: {fileID: 8764478876562174420, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_Name
@@ -2609,11 +2609,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8768492812042765644, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000019009985
+      value: 0.000000019009988
       objectReference: {fileID: 0}
     - target: {fileID: 8768492812042765644, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000029486942
+      value: -0.0000000029486948
       objectReference: {fileID: 0}
     - target: {fileID: 8979308566184540033, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2843,7 +2843,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a9480fae1b98e44902c28bd3d8153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restitution: 0.8
+  restitution: 0.5
   surfaceFriction: 0.4
   isTrigger: 0
 --- !u!4 &1726724365 stripped
@@ -2903,6 +2903,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 288d39abe4cd575428a153cfb2940ba1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 804934f0d52a7134ea745e896b314bac, type: 2}
     - target: {fileID: 919132149155446097, guid: 288d39abe4cd575428a153cfb2940ba1, type: 3}
       propertyPath: m_Name
       value: spline-default (1)
@@ -3149,7 +3153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a9480fae1b98e44902c28bd3d8153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restitution: 0.8
+  restitution: 0.5
   surfaceFriction: 0.4
   isTrigger: 0
 --- !u!1 &1947813425 stripped
@@ -3174,7 +3178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a9480fae1b98e44902c28bd3d8153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restitution: 0.8
+  restitution: 0.5
   surfaceFriction: 0.4
   isTrigger: 0
 --- !u!1001 &1960362536
@@ -3354,7 +3358,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a9480fae1b98e44902c28bd3d8153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restitution: 0.8
+  restitution: 0.5
   surfaceFriction: 0.4
   isTrigger: 0
 --- !u!1001 &2075123625
@@ -3515,7 +3519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a9480fae1b98e44902c28bd3d8153b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restitution: 0.8
+  restitution: 0.5
   surfaceFriction: 0.4
   isTrigger: 0
 --- !u!1001 &2144385542
@@ -3540,7 +3544,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: caea8f78685a04e44850b8cd2206e61f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.2222633
+      value: 5.22
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: caea8f78685a04e44850b8cd2206e61f, type: 3}
       propertyPath: m_LocalRotation.w
