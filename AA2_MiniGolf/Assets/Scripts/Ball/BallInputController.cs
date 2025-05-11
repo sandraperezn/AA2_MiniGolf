@@ -101,7 +101,7 @@ public class BallInputController : MonoBehaviour
         Vector3 initVel = launchDir * speed;
 
         Vector3 startPos = transform.position;
-        float g = PhysicsManager.Instance.gravity;
+        float g = PhysicsManager.Gravity;
 
         for (int i = 0; i < trajectoryPoints; i++)
         {

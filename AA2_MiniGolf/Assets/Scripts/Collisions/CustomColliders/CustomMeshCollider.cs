@@ -1,117 +1,99 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Super-simple sphere vs. mesh collider with no culling whatsoever.
-/// </summary>
 [RequireComponent(typeof(MeshFilter))]
 public class CustomMeshCollider : CustomCollider
 {
-    private Vector3[] _verts;
-    private int[]     _tris;
+    [Header("Hole Triangles")] [Tooltip("Indices of triangles to skip (e.g. holes).")] [SerializeField]
+    private List<int> holeTriangles = new List<int>();
+
+    private Vector3[] worldVerts;
+    private int[] tris;
 
     private void Awake()
     {
-        var mf = GetComponent<MeshFilter>();
-        var m  = mf.sharedMesh;
-        _verts = m.vertices;
-        _tris  = m.triangles;
+        // Cache triangles & world-space verts once (static geometry)
+        MeshFilter mf = GetComponent<MeshFilter>();
+        Mesh mesh = mf.sharedMesh;
+        tris = mesh.triangles;
+
+        Vector3[] local = mesh.vertices;
+        worldVerts = new Vector3[local.Length];
+        for (int i = 0; i < local.Length; i++)
+            worldVerts[i] = transform.TransformPoint(local[i]);
     }
 
-    /// <summary>
-    /// Walk every triangle, project the sphere center onto it,
-    /// and pick the deepest‐penetrating one.
-    /// </summary>
     public override bool DetectCollision(
         Vector3 sphereCenter,
-        float   sphereRadius,
+        float sphereRadius,
         out Vector3 collisionNormal,
-        out float   penetration)
+        out float penetration)
     {
         collisionNormal = Vector3.zero;
-        penetration     = 0f;
+        penetration = 0f;
 
-        bool   hitAny   = false;
-        float  bestPen  = 0f;
-        Vector3 bestNorm = Vector3.zero;
-
-        // brute-force every tri
-        for (int i = 0; i < _tris.Length; i += 3)
+        // Brute-force every triangle
+        for (int i = 0, triIdx = 0; i < tris.Length; i += 3, triIdx++)
         {
-            // world-space verts
-            Vector3 A = transform.TransformPoint(_verts[_tris[i]]);
-            Vector3 B = transform.TransformPoint(_verts[_tris[i + 1]]);
-            Vector3 C = transform.TransformPoint(_verts[_tris[i + 2]]);
+            // 1) Skip hole tris
+            if (holeTriangles.Contains(triIdx))
+                continue;
 
-            // closest point on tri:
-            Vector3 P = ClosestPointOnTriangle(sphereCenter, A, B, C);
-            Vector3 delta = sphereCenter - P;
-            float   dist  = delta.magnitude;
+            // 2) Get the three world-space vertices
+            Vector3 A = worldVerts[tris[i]];
+            Vector3 B = worldVerts[tris[i + 1]];
+            Vector3 C = worldVerts[tris[i + 2]];
 
-            if (dist < sphereRadius)
-            {
-                float pen = sphereRadius - dist;
-                if (!hitAny || pen > bestPen)
-                {
-                    hitAny  = true;
-                    bestPen = pen;
-                    bestNorm = (dist > Mathf.Epsilon)
-                        ? delta.normalized
-                        : Vector3.Cross(B - A, C - A).normalized;
-                }
-            }
-        }
+            // 3) Plane test: project sphereCenter onto triangle plane
+            Vector3 n = Vector3.Cross(B - A, C - A).normalized;
+            float d = Vector3.Dot(sphereCenter - A, n);
+            if (Mathf.Abs(d) > sphereRadius)
+                continue; // too far from this plane
 
-        if (hitAny)
-        {
-            penetration     = bestPen;
-            collisionNormal = bestNorm;
+            Vector3 P = sphereCenter - n * d;
+
+            // 4) Point-in-triangle test (barycentric method)
+            if (!IsPointInTriangle(P, A, B, C))
+                continue;
+
+            // 5) We have a hit — immediately return
+            //    Ensure normal points *out* of the mesh toward the sphere
+            if (Vector3.Dot(sphereCenter - P, n) < 0f)
+                n = -n;
+
+            collisionNormal = n;
+            penetration = sphereRadius - Mathf.Abs(d);
             return true;
         }
 
         return false;
     }
 
-    protected override void OnDrawGizmosInternal()
+    // Barycentric coordinate test, identical to your friend's:
+    private bool IsPointInTriangle(
+        Vector3 p, Vector3 a, Vector3 b, Vector3 c)
     {
-        throw new System.NotImplementedException();
+        Vector3 v0 = c - a;
+        Vector3 v1 = b - a;
+        Vector3 v2 = p - a;
+
+        float d00 = Vector3.Dot(v0, v0);
+        float d01 = Vector3.Dot(v0, v1);
+        float d11 = Vector3.Dot(v1, v1);
+        float d20 = Vector3.Dot(v2, v0);
+        float d21 = Vector3.Dot(v2, v1);
+
+        float denom = d00 * d11 - d01 * d01;
+        if (Mathf.Abs(denom) < 1e-6f) return false;
+
+        float u = (d11 * d20 - d01 * d21) / denom;
+        float v = (d00 * d21 - d01 * d20) / denom;
+
+        return (u >= 0f) && (v >= 0f) && (u + v <= 1f);
     }
 
-    // Ericson’s algorithm for closest point on triangle
-    private static Vector3 ClosestPointOnTriangle(
-        Vector3 p,
-        Vector3 a,
-        Vector3 b,
-        Vector3 c)
+    // No extra gizmos by default
+    protected override void OnDrawGizmosInternal()
     {
-        Vector3 ab = b - a, ac = c - a, ap = p - a;
-        float d1 = Vector3.Dot(ab, ap), d2 = Vector3.Dot(ac, ap);
-        if (d1 <= 0f && d2 <= 0f) return a;
-
-        Vector3 bp = p - b;
-        float d3 = Vector3.Dot(ab, bp), d4 = Vector3.Dot(ac, bp);
-        if (d3 >= 0f && d4 <= d3) return b;
-
-        float vc = d1 * d4 - d3 * d2;
-        if (vc <= 0f && d1 >= 0f && d3 <= 0f)
-        {
-            float v = d1 / (d1 - d3);
-            return a + v * ab;
-        }
-
-        Vector3 cp = p - c;
-        float d5 = Vector3.Dot(ab, cp), d6 = Vector3.Dot(ac, cp);
-        if (d6 >= 0f && d5 <= d6) return c;
-
-        float vb = d5 * d2 - d1 * d6;
-        if (vb <= 0f && d2 >= 0f && d6 <= 0f)
-        {
-            float w = d2 / (d2 - d6);
-            return a + w * ac;
-        }
-
-        float va = d3 * d6 - d5 * d4;
-        float denom = 1f / (va + vb + vc);
-        float v2 = vb * denom, w2 = vc * denom;
-        return a + ab * v2 + ac * w2;
     }
 }

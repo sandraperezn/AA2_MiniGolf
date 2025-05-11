@@ -1,79 +1,105 @@
 using UnityEngine;
 
-[RequireComponent(typeof(LineRenderer))]
+[RequireComponent(typeof(MeshFilter))]
 public class BallController : MonoBehaviour
 {
-    private const float MaxVelocity = 50f;
+    [SerializeField] private float maxVelocity = 50f;
+    [SerializeField] private float skinWidth = 0.001f;
+
     private Vector3 velocity;
+
+    // Offset from transform.position to the mesh’s true center (in world space)
+    private Vector3 localCenterOffset;
+    private Vector3 WorldCenterOffset => transform.TransformPoint(localCenterOffset) - transform.position;
+
+    private float radius;
 
     private void Awake()
     {
-        // Corrección del radio de la bola de golf 
+        // figure out your real radius and center offset from the mesh’s bounds
         MeshFilter mf = GetComponent<MeshFilter>();
-        float realRadius = mf.sharedMesh.bounds.extents.x * transform.localScale.x;
-        PhysicsManager.Instance.BallRadius = realRadius;
+        Bounds b = mf.sharedMesh.bounds;
+        radius = b.extents.x * transform.localScale.x;
+        localCenterOffset = b.center;
+        PhysicsManager.Instance.BallRadius = radius;
     }
 
     private void FixedUpdate()
     {
-        // 1) Actualiza velocidad según físicas
-        PhysicsManager.Instance.ApplyPhysics(ref velocity);
+        float dt = Time.fixedDeltaTime;
+        // 1) Update velocity from gravity/air/friction
+        PhysicsManager.Instance.ApplyPhysics(ref velocity, dt);
 
-        // 2) Limita magnitud
-        if (velocity.magnitude > MaxVelocity)
-            velocity = velocity.normalized * MaxVelocity;
+        // 2) Clamp top speed
+        if (velocity.sqrMagnitude > maxVelocity * maxVelocity)
+            velocity = velocity.normalized * maxVelocity;
 
-        // 3) Posición tentativa
-        Vector3 currentPos = transform.position;
-        Vector3 nextPos = currentPos + velocity * Time.fixedDeltaTime;
+        // 3) Compute world-space start & total displacement of the sphere center
+        Vector3 startCenter = transform.position + WorldCenterOffset;
+        Vector3 totalDisp = velocity * dt;
 
-        // 4) Comprobar colisión contra suelo u otros CustomCollider
-        if (CustomCollisionManager.Instance.CheckCollision(
-                nextPos,
-                PhysicsManager.Instance.BallRadius,
-                out CustomCollider hitC,
-                out Vector3 normal,
-                out float penetration,
-                out float surfaceFriction))
+        // 4) Sub-step so we never move more than half a radius in one go
+        float maxStep = radius * 0.5f;
+        int steps = Mathf.Max(1, Mathf.CeilToInt(totalDisp.magnitude / maxStep));
+
+        Vector3 currCenter = startCenter;
+
+        for (int i = 0; i < steps; i++)
         {
-            // Posicionar justo fuera del collider
-            transform.position = nextPos + normal * (penetration + 0.001f);
+            Vector3 targetCenter = currCenter + totalDisp / steps;
 
-            // Si es suelo horizontal, cancelar Y
-            if (normal.y > 0.5f)
-                velocity.y = 0f;
-
-            // Aplicar componente de pendiente y fricción en XZ
-            Vector3 slope = Vector3.ProjectOnPlane(Vector3.down, normal).normalized;
-            velocity += PhysicsManager.Instance.gravity * Time.fixedDeltaTime * slope;
-
-            Vector3 vH = new(velocity.x, 0f, velocity.z);
-            if (vH.magnitude > 0.01f)
+            // 5) Check collision at targetCenter
+            if (CustomCollisionManager.Instance.CheckCollision(
+                    targetCenter,
+                    radius,
+                    out CustomCollider hitC,
+                    out Vector3 normal,
+                    out float penetration,
+                    out float surfaceFriction))
             {
-                Vector3 fAcc = PhysicsManager.Instance.gravity * surfaceFriction * -vH.normalized;
-                vH += fAcc * Time.fixedDeltaTime;
-                if (Vector3.Dot(vH, fAcc) > 0f)
-                    vH = Vector3.zero;
+                // 6) push out along the normal
+                currCenter = targetCenter + normal * (penetration + skinWidth);
+
+                // — horizontal floor? zero Y
+                if (normal.y > 0.5f) velocity.y = 0f;
+
+                // — slope acceleration
+                Vector3 slope = Vector3.ProjectOnPlane(Vector3.down, normal).normalized;
+                velocity += PhysicsManager.Gravity * dt * slope;
+
+                // — friction on horizontal
+                Vector3 vH = new Vector3(velocity.x, 0, velocity.z);
+                if (vH.magnitude > 0.01f)
+                {
+                    Vector3 fAcc = PhysicsManager.Gravity * surfaceFriction * -vH.normalized;
+                    vH += fAcc * dt;
+                    if (Vector3.Dot(vH, fAcc) > 0f) vH = Vector3.zero;
+                }
+
+                velocity.x = vH.x;
+                velocity.z = vH.z;
+
+                // — restitution
+                float e = hitC.restitution;
+                Vector3 vNorm = Vector3.Project(velocity, normal);
+                Vector3 vTan = velocity - vNorm;
+                velocity = vTan - vNorm * e;
+
+                // stop sub-stepping after a hit this frame
+                break;
             }
-
-            velocity.x = vH.x;
-            velocity.z = vH.z;
-
-            // Restitución (choque)
-            float e = hitC.restitution;
-            Vector3 vNorm = Vector3.Project(velocity, normal);
-            Vector3 vTan = velocity - vNorm;
-            velocity = vTan - vNorm * e;
+            else
+            {
+                currCenter = targetCenter;
+            }
         }
-        else
-        {
-            transform.position = nextPos;
-        }
+
+        // 7) finally, write back the *transform.position* so that the mesh (which
+        //    is offset by _worldCenterOffset) ends up in the right place.
+        transform.position = currCenter - WorldCenterOffset;
     }
 
-    /// <summary>
-    /// Lanza la bola inicializando su velocidad interna
-    /// </summary>
+    // Called by your input code to launch the ball.
     public void Launch(Vector3 initialVelocity)
     {
         velocity = initialVelocity;
