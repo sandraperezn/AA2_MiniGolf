@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.31293982, g: 0.29358435, b: 0.5140297, a: 1}
+  m_IndirectSpecularColor: {r: 0.3128686, g: 0.29350835, b: 0.5139649, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -184,6 +184,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 804934f0d52a7134ea745e896b314bac, type: 2}
+    - target: {fileID: -5754084199372789682, guid: caea8f78685a04e44850b8cd2206e61f, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -5340825992866811146, guid: caea8f78685a04e44850b8cd2206e61f, type: 3}
     - target: {fileID: 919132149155446097, guid: caea8f78685a04e44850b8cd2206e61f, type: 3}
       propertyPath: m_Name
       value: round-corner-c (3)
@@ -266,6 +270,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 804934f0d52a7134ea745e896b314bac, type: 2}
+    - target: {fileID: -5754084199372789682, guid: caea8f78685a04e44850b8cd2206e61f, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -5340825992866811146, guid: caea8f78685a04e44850b8cd2206e61f, type: 3}
     - target: {fileID: 919132149155446097, guid: caea8f78685a04e44850b8cd2206e61f, type: 3}
       propertyPath: m_Name
       value: round-corner-c
@@ -338,6 +346,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 804934f0d52a7134ea745e896b314bac, type: 2}
+    - target: {fileID: -5754084199372789682, guid: caea8f78685a04e44850b8cd2206e61f, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -5340825992866811146, guid: caea8f78685a04e44850b8cd2206e61f, type: 3}
     - target: {fileID: 919132149155446097, guid: caea8f78685a04e44850b8cd2206e61f, type: 3}
       propertyPath: m_Name
       value: round-corner-c (1)
@@ -683,6 +695,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5754084199372789682, guid: 103b7fc7721398a45ad13e6892a3c601, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -1470391202872572035, guid: 103b7fc7721398a45ad13e6892a3c601, type: 3}
     - target: {fileID: 919132149155446097, guid: 103b7fc7721398a45ad13e6892a3c601, type: 3}
       propertyPath: m_Name
       value: start
@@ -755,6 +771,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: -6538903991835684241, guid: fd3350e131c6c1d45915a4393703af7e, type: 3}
+    - target: {fileID: -5754084199372789682, guid: fd3350e131c6c1d45915a4393703af7e, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 166080381661126322, guid: fd3350e131c6c1d45915a4393703af7e, type: 3}
     - target: {fileID: 919132149155446097, guid: fd3350e131c6c1d45915a4393703af7e, type: 3}
       propertyPath: m_Name
       value: hole-round
@@ -828,6 +848,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5754084199372789682, guid: e04b6caafb943b94bb78c82583a934c9, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4132987019272745962, guid: e04b6caafb943b94bb78c82583a934c9, type: 3}
     - target: {fileID: 919132149155446097, guid: e04b6caafb943b94bb78c82583a934c9, type: 3}
       propertyPath: m_Name
       value: round-corner-a
@@ -916,6 +940,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5754084199372789682, guid: ebd93173e0ddff24f887a9d7a0cfd4fe, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -5566359124864812416, guid: ebd93173e0ddff24f887a9d7a0cfd4fe, type: 3}
     - target: {fileID: 919132149155446097, guid: ebd93173e0ddff24f887a9d7a0cfd4fe, type: 3}
       propertyPath: m_Name
       value: obstacle-diamond
@@ -1115,6 +1143,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5754084199372789682, guid: 915a25a21c7842c4b9117ed0340a7263, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 5673807154854224423, guid: 915a25a21c7842c4b9117ed0340a7263, type: 3}
     - target: {fileID: 919132149155446097, guid: 915a25a21c7842c4b9117ed0340a7263, type: 3}
       propertyPath: m_Name
       value: walls-to-open (1)
@@ -1183,6 +1215,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5754084199372789682, guid: 915a25a21c7842c4b9117ed0340a7263, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 5673807154854224423, guid: 915a25a21c7842c4b9117ed0340a7263, type: 3}
     - target: {fileID: 919132149155446097, guid: 915a25a21c7842c4b9117ed0340a7263, type: 3}
       propertyPath: m_Name
       value: walls-to-open
@@ -1248,6 +1284,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1726724365}
+  - {fileID: 1831379450}
   - {fileID: 636582541}
   - {fileID: 769084830}
   - {fileID: 531192824}
@@ -1296,7 +1333,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c2479b8c6f7b544418ee8ddb0fe418e7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.167
+      value: 1.153
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c2479b8c6f7b544418ee8ddb0fe418e7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1304,7 +1341,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c2479b8c6f7b544418ee8ddb0fe418e7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.119
+      value: 4.108
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c2479b8c6f7b544418ee8ddb0fe418e7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1434,6 +1471,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5754084199372789682, guid: 9201fc526d369c24bb6bef878f78dc0c, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -5864320914214940941, guid: 9201fc526d369c24bb6bef878f78dc0c, type: 3}
     - target: {fileID: 919132149155446097, guid: 9201fc526d369c24bb6bef878f78dc0c, type: 3}
       propertyPath: m_Name
       value: ramp
@@ -1689,11 +1730,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8979308566184540033, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000008476964
+      value: 0.000000008476961
       objectReference: {fileID: 0}
     - target: {fileID: 8979308566184540033, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000014683266
+      value: -0.0000000014683265
       objectReference: {fileID: 0}
     - target: {fileID: 9069719793018563525, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_FollowOffset.y
@@ -1948,9 +1989,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5754084199372789682, guid: e0df54b3cf2f04d4bb292b9640f4ef01, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -8254804224689600507, guid: e0df54b3cf2f04d4bb292b9640f4ef01, type: 3}
     - target: {fileID: 919132149155446097, guid: e0df54b3cf2f04d4bb292b9640f4ef01, type: 3}
       propertyPath: m_Name
       value: end
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e0df54b3cf2f04d4bb292b9640f4ef01, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1960,6 +2009,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1461850587}
   m_SourcePrefab: {fileID: 100100000, guid: e0df54b3cf2f04d4bb292b9640f4ef01, type: 3}
+--- !u!4 &1831379450 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e0df54b3cf2f04d4bb292b9640f4ef01, type: 3}
+  m_PrefabInstance: {fileID: 1831379449}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1963963431
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2016,6 +2070,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 804934f0d52a7134ea745e896b314bac, type: 2}
+    - target: {fileID: -5754084199372789682, guid: caea8f78685a04e44850b8cd2206e61f, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -5340825992866811146, guid: caea8f78685a04e44850b8cd2206e61f, type: 3}
     - target: {fileID: 919132149155446097, guid: caea8f78685a04e44850b8cd2206e61f, type: 3}
       propertyPath: m_Name
       value: round-corner-c (2)

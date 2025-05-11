@@ -7,19 +7,11 @@ public class LevelLoader : MonoBehaviour
 
     private void OnWinTriggerEnter()
     {
-        print("collided with win trigger");
         // TODO: Load the next level
+        AudioManager.Instance.PlaySfx(AudioManager.SfxType.Goal);
     }
-
+    
     private void Awake() => winTrigger = GetComponent<CustomCollider>();
-
-    private void OnEnable()
-    {
-        winTrigger.OnTriggerEnterEvent += OnWinTriggerEnter;
-    }
-
-    private void OnDisable()
-    {
-        winTrigger.OnTriggerEnterEvent -= OnWinTriggerEnter;
-    }
+    private void OnEnable() => winTrigger.OnTriggerEnterEvent += OnWinTriggerEnter;
+    private void OnDisable() => winTrigger.OnTriggerEnterEvent -= OnWinTriggerEnter;
 }
