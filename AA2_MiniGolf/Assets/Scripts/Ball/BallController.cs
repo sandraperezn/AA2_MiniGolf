@@ -19,10 +19,10 @@ namespace Ball
         private void Awake()
         {
             // figure out your real radius and center offset from the mesh’s bounds
-            MeshFilter mf = GetComponent<MeshFilter>();
-            Bounds b = mf.sharedMesh.bounds;
-            radius = b.extents.x * transform.localScale.x;
-            localCenterOffset = b.center;
+            MeshFilter meshFilter = GetComponent<MeshFilter>();
+            Bounds bounds = meshFilter.sharedMesh.bounds;
+            radius = bounds.extents.x * transform.localScale.x;
+            localCenterOffset = bounds.center;
             PhysicsManager.Instance.BallRadius = radius;
         }
 
@@ -70,16 +70,16 @@ namespace Ball
                     velocity += PhysicsManager.Gravity * dt * slope;
 
                     // — friction on horizontal
-                    Vector3 vH = new(velocity.x, 0, velocity.z);
-                    if (vH.magnitude > 0.01f)
+                    Vector3 horizontalVelocity = new(velocity.x, 0, velocity.z);
+                    if (horizontalVelocity.magnitude > 0.01f)
                     {
-                        Vector3 fAcc = PhysicsManager.Gravity * surfaceFriction * -vH.normalized;
-                        vH += fAcc * dt;
-                        if (Vector3.Dot(vH, fAcc) > 0f) vH = Vector3.zero;
+                        Vector3 accelerationForce = PhysicsManager.Gravity * surfaceFriction * -horizontalVelocity.normalized;
+                        horizontalVelocity += accelerationForce * dt;
+                        if (Vector3.Dot(horizontalVelocity, accelerationForce) > 0f) horizontalVelocity = Vector3.zero;
                     }
 
-                    velocity.x = vH.x;
-                    velocity.z = vH.z;
+                    velocity.x = horizontalVelocity.x;
+                    velocity.z = horizontalVelocity.z;
 
                     // — restitution
                     Vector3 normalVector = Vector3.Project(velocity, normal);

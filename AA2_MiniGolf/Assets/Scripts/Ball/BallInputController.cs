@@ -49,27 +49,27 @@ namespace Ball
 
                 // Calculate force and direction
                 Vector2 dragEnd = Input.mousePosition;
-                Vector2 dragVec = dragStartScreen - dragEnd;
-                float dragDist = Mathf.Min(dragVec.magnitude, maxDragDistance);
-                float dragNorm = dragDist / maxDragDistance;
+                Vector2 dragVector = dragStartScreen - dragEnd;
+                float dragDistance = Mathf.Min(dragVector.magnitude, maxDragDistance);
+                float dragNormal = dragDistance / maxDragDistance;
 
-                float pitchDeg = maxPitchAngle * dragNorm;
-                float yawDeg = Mathf.Atan2(dragVec.x, dragVec.y) * Mathf.Rad2Deg;
+                float pitchAngle = maxPitchAngle * dragNormal;
+                float yawAngle = Mathf.Atan2(dragVector.x, dragVector.y) * Mathf.Rad2Deg;
 
                 // Base direction: project camera view on XZ plane
-                Vector3 baseDir = Vector3.ProjectOnPlane(mainCamera.transform.forward, Vector3.up).normalized;
-                Quaternion yawRot = Quaternion.AngleAxis(yawDeg, Vector3.up);
-                Vector3 dirH = yawRot * baseDir;
+                Vector3 baseDirection = Vector3.ProjectOnPlane(mainCamera.transform.forward, Vector3.up).normalized;
+                Quaternion yawRotation = Quaternion.AngleAxis(yawAngle, Vector3.up);
+                Vector3 dirH = yawRotation * baseDirection;
 
                 // Apply pitch by rotating around the “right” axis
                 Vector3 rightAxis = Vector3.Cross(Vector3.up, dirH).normalized;
-                Vector3 launchDir = Quaternion.AngleAxis(-pitchDeg, rightAxis) * dirH;
-                launchDir.Normalize();
+                Vector3 launchDirection = Quaternion.AngleAxis(-pitchAngle, rightAxis) * dirH;
+                launchDirection.Normalize();
 
-                float speed = dragDist * forceMultiplier;
+                float speed = dragDistance * forceMultiplier;
 
                 // Launch the ball in the calculated direction
-                ballController.Launch(launchDir * speed);
+                ballController.Launch(launchDirection * speed);
             }
 
             if (isDragging)
@@ -82,33 +82,33 @@ namespace Ball
         {
             Vector2 mousePos = Input.mousePosition;
             Vector2 dragVec = dragStartScreen - mousePos;
-            float dragDist = Mathf.Min(dragVec.magnitude, maxDragDistance);
-            float dragNorm = dragDist / maxDragDistance;
+            float dragDistance = Mathf.Min(dragVec.magnitude, maxDragDistance);
+            float dragNormal = dragDistance / maxDragDistance;
 
-            float pitchDeg = maxPitchAngle * dragNorm;
-            float yawDeg = Mathf.Atan2(dragVec.x, dragVec.y) * Mathf.Rad2Deg;
+            float pitchAngle = maxPitchAngle * dragNormal;
+            float yawAngle = Mathf.Atan2(dragVec.x, dragVec.y) * Mathf.Rad2Deg;
 
-            Vector3 baseDir = Vector3.ProjectOnPlane(mainCamera.transform.forward, Vector3.up).normalized;
-            Quaternion yawRot = Quaternion.AngleAxis(yawDeg, Vector3.up);
-            Vector3 dirH = yawRot * baseDir;
+            Vector3 baseDirection = Vector3.ProjectOnPlane(mainCamera.transform.forward, Vector3.up).normalized;
+            Quaternion yawRotation = Quaternion.AngleAxis(yawAngle, Vector3.up);
+            Vector3 dirH = yawRotation * baseDirection;
             Vector3 rightAxis = Vector3.Cross(Vector3.up, dirH).normalized;
-            Vector3 launchDir = Quaternion.AngleAxis(-pitchDeg, rightAxis) * dirH;
-            launchDir.Normalize();
+            Vector3 launchDirection = Quaternion.AngleAxis(-pitchAngle, rightAxis) * dirH;
+            launchDirection.Normalize();
 
-            float speed = dragDist * forceMultiplier;
-            Vector3 initVel = launchDir * speed;
+            float speed = dragDistance * forceMultiplier;
+            Vector3 initialVelocity = launchDirection * speed;
 
-            Vector3 startPos = transform.position;
+            Vector3 startPosition = transform.position;
 
             const float g = PhysicsManager.Gravity;
             const float timeStep = 0.1f;
             for (int i = 0; i < TrajectoryPoints; i++)
             {
-                float t = i * timeStep;
+                float step = i * timeStep;
                 // s = p0 + v0*t + ½·(–g·up)·t²
-                Vector3 point = startPos
-                                + initVel * t
-                                - Vector3.up * (0.5f * g * t * t);
+                Vector3 point = startPosition
+                                + initialVelocity * step
+                                - Vector3.up * (0.5f * g * step * step);
                 lineRenderer.SetPosition(i, point);
             }
         }

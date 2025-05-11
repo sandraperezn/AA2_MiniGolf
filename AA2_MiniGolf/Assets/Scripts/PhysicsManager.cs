@@ -11,8 +11,7 @@ public class PhysicsManager : Singleton<PhysicsManager>
 
     #endregion
 
-    [Header("Ball Properties")]
-    public float ballMass = 0.1f;
+    [Header("Ball Properties")] public float ballMass = 0.1f;
 
     public float BallRadius { get; set; }
     public Vector3 BallVelocity { get; private set; }
@@ -27,9 +26,9 @@ public class PhysicsManager : Singleton<PhysicsManager>
         if (velocity.magnitude > 0f)
         {
             float area = Mathf.PI * BallRadius * BallRadius;
-            float dragMag = 0.5f * AirDensity * velocity.sqrMagnitude * DragCoefficient * area;
-            Vector3 dragAcc = -velocity.normalized * (dragMag / ballMass);
-            velocity += dragAcc * dt;
+            float dragMagnitude = 0.5f * AirDensity * velocity.sqrMagnitude * DragCoefficient * area;
+            Vector3 dragAcceleration = -velocity.normalized * (dragMagnitude / ballMass);
+            velocity += dragAcceleration * dt;
         }
 
         BallVelocity = velocity;

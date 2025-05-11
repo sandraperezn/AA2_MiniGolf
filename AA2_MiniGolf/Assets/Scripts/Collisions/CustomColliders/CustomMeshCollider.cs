@@ -41,24 +41,24 @@ namespace Collisions
                 Vector3 c = worldVerts[tris[i + 2]];
 
                 // 2) Plane test: project sphereCenter onto triangle plane
-                Vector3 n = Vector3.Cross(b - a, c - a).normalized;
-                float d = Vector3.Dot(sphereCenter - a, n);
-                if (Mathf.Abs(d) > sphereRadius) continue; // too far from this plane
+                Vector3 normal = Vector3.Cross(b - a, c - a).normalized;
+                float dot = Vector3.Dot(sphereCenter - a, normal);
+                if (Mathf.Abs(dot) > sphereRadius) continue; // too far from this plane
 
-                Vector3 p = sphereCenter - n * d;
+                Vector3 point = sphereCenter - normal * dot;
 
                 // 3) Point-in-triangle test (barycentric method)
-                if (!IsPointInTriangle(p, a, b, c)) continue;
+                if (!IsPointInTriangle(point, a, b, c)) continue;
 
                 // 4) We have a hit — immediately return
                 //    Ensure normal points *out* of the mesh toward the sphere
-                if (Vector3.Dot(sphereCenter - p, n) < 0f)
+                if (Vector3.Dot(sphereCenter - point, normal) < 0f)
                 {
-                    n = -n;
+                    normal = -normal;
                 }
 
-                collisionNormal = n;
-                penetration = sphereRadius - Mathf.Abs(d);
+                collisionNormal = normal;
+                penetration = sphereRadius - Mathf.Abs(dot);
                 return true;
             }
 
@@ -79,11 +79,11 @@ namespace Collisions
             float d20 = Vector3.Dot(v2, v0);
             float d21 = Vector3.Dot(v2, v1);
 
-            float denom = d00 * d11 - d01 * d01;
-            if (Mathf.Abs(denom) < 1e-6f) return false;
+            float denominator = d00 * d11 - d01 * d01;
+            if (Mathf.Abs(denominator) < 1e-6f) return false;
 
-            float u = (d11 * d20 - d01 * d21) / denom;
-            float v = (d00 * d21 - d01 * d20) / denom;
+            float u = (d11 * d20 - d01 * d21) / denominator;
+            float v = (d00 * d21 - d01 * d20) / denominator;
 
             return u >= 0f && v >= 0f && u + v <= 1f;
         }
