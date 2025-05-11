@@ -89,8 +89,6 @@ public class CustomMeshCollider : CustomCollider
     protected override void OnDrawGizmosInternal()
     {
         MeshFilter mf = GetComponent<MeshFilter>();
-
-        // Draw the mesh collider as a solid mesh
         Gizmos.color = Color.red;
         Gizmos.DrawWireMesh(mf.sharedMesh, transform.position, transform.rotation, transform.lossyScale);
     }
