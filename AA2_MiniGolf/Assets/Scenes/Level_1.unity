@@ -184,6 +184,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: round-corner-c (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: caea8f78685a04e44850b8cd2206e61f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -258,6 +262,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: round-corner-c
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: caea8f78685a04e44850b8cd2206e61f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -321,6 +329,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: caea8f78685a04e44850b8cd2206e61f, type: 3}
       propertyPath: m_Name
       value: round-corner-c (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: caea8f78685a04e44850b8cd2206e61f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -589,6 +601,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: supports-low-bottom
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cd0b213b1207d4a45b209f038377d6a9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -655,6 +671,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: start
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 103b7fc7721398a45ad13e6892a3c601, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -715,9 +735,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: fd3350e131c6c1d45915a4393703af7e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -6538903991835684241, guid: fd3350e131c6c1d45915a4393703af7e, type: 3}
     - target: {fileID: 919132149155446097, guid: fd3350e131c6c1d45915a4393703af7e, type: 3}
       propertyPath: m_Name
       value: hole-round
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fd3350e131c6c1d45915a4393703af7e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -787,6 +815,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e04b6caafb943b94bb78c82583a934c9, type: 3}
       propertyPath: m_Name
       value: round-corner-a
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e04b6caafb943b94bb78c82583a934c9, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -871,6 +903,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: ebd93173e0ddff24f887a9d7a0cfd4fe, type: 3}
       propertyPath: m_Name
       value: obstacle-diamond
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ebd93173e0ddff24f887a9d7a0cfd4fe, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1067,6 +1103,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: walls-to-open (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 915a25a21c7842c4b9117ed0340a7263, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1130,6 +1170,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 915a25a21c7842c4b9117ed0340a7263, type: 3}
       propertyPath: m_Name
       value: walls-to-open
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 915a25a21c7842c4b9117ed0340a7263, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1281,6 +1325,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: flag-green
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c2479b8c6f7b544418ee8ddb0fe418e7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1372,6 +1420,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9201fc526d369c24bb6bef878f78dc0c, type: 3}
       propertyPath: m_Name
       value: ramp
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9201fc526d369c24bb6bef878f78dc0c, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1519,11 +1571,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6124294843758895387, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000008489578
+      value: 0.000000008489578
       objectReference: {fileID: 0}
     - target: {fileID: 6124294843758895387, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000013935424
+      value: -0.0000000013935424
       objectReference: {fileID: 0}
     - target: {fileID: 6520011171328229782, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1551,11 +1603,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6539953815307983687, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000016979158
+      value: 0.000000016979158
       objectReference: {fileID: 0}
     - target: {fileID: 6539953815307983687, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000027870857
+      value: -0.0000000027870857
       objectReference: {fileID: 0}
     - target: {fileID: 8764478876562174420, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_Name
@@ -1571,11 +1623,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8768492812042765644, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000019009988
+      value: -0.000000019009985
       objectReference: {fileID: 0}
     - target: {fileID: 8768492812042765644, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000029486948
+      value: 0.0000000029486942
       objectReference: {fileID: 0}
     - target: {fileID: 8979308566184540033, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1741,6 +1793,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: split
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9d136d1ca87c4a24d85022c53491a5bf, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1849,6 +1905,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: caea8f78685a04e44850b8cd2206e61f, type: 3}
       propertyPath: m_Name
       value: round-corner-c (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: caea8f78685a04e44850b8cd2206e61f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
