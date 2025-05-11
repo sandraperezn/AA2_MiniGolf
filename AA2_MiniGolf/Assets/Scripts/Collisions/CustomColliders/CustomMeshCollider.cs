@@ -88,17 +88,10 @@ public class CustomMeshCollider : CustomCollider
 
     protected override void OnDrawGizmosInternal()
     {
-        // Draw the mesh collider as a wireframe
-        Gizmos.color = Color.yellow;
-        for (int i = 0; i < tris.Length; i += 3)
-        {
-            Vector3 a = worldVerts[tris[i]];
-            Vector3 b = worldVerts[tris[i + 1]];
-            Vector3 c = worldVerts[tris[i + 2]];
+        MeshFilter mf = GetComponent<MeshFilter>();
 
-            Gizmos.DrawLine(a, b);
-            Gizmos.DrawLine(b, c);
-            Gizmos.DrawLine(c, a);
-        }
+        // Draw the mesh collider as a solid mesh
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireMesh(mf.sharedMesh, transform.position, transform.rotation, transform.lossyScale);
     }
 }

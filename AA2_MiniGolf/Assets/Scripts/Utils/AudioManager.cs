@@ -1,35 +1,35 @@
+using System;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager : Singleton<AudioManager>
 {
-    public static AudioManager Instance;
+    [Header("Audio Sources"), SerializeField]
+    private AudioSource musicSource;
 
-    [Header("Audio Sources")]
-    public AudioSource musicSource;
-    public AudioSource sfxSource;
+    [SerializeField] private AudioSource sfxSource;
 
-    [Header("Audio Clips")]
-    public AudioClip backgroundMusic;
-    public AudioClip shootSfx;
-    public AudioClip hitSfx;
-    public AudioClip goalSfx;
-    
-    [Header("Audio Settings")]
-    [Range(0f, 1f)] public float musicVolume = 1f;
+    [Header("Audio Clips"), SerializeField]
+    private AudioClip backgroundMusic;
+
+    [SerializeField] private AudioClip shootSfx;
+    [SerializeField] private AudioClip hitSfx;
+    [SerializeField] private AudioClip goalSfx;
+
+    [Header("Audio Settings"), Range(0f, 1f)]
+    public float musicVolume = 1f;
+
     [Range(0f, 1f)] public float sfxVolume = 1f;
+
+    public enum SfxType
+    {
+        Shoot,
+        Hit,
+        Goal
+    }
 
     private void Awake()
     {
-        // Singleton setup
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject); // Persist between scenes
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
@@ -37,24 +37,31 @@ public class AudioManager : MonoBehaviour
         // Set initial volumes
         musicSource.volume = musicVolume;
         sfxSource.volume = sfxVolume;
-        
+
         // Play background music
         PlayMusic(backgroundMusic);
     }
 
     public void PlayMusic(AudioClip clip)
     {
-        if (clip == null) return;
+        if (!clip) return;
         musicSource.clip = clip;
         musicSource.loop = true;
         musicSource.volume = musicVolume;
         musicSource.Play();
     }
 
-    public void PlaySFX(AudioClip clip)
+    public void PlaySfx(SfxType clip)
     {
-        if (clip == null) return;
-        sfxSource.PlayOneShot(clip, sfxVolume);
+        AudioClip sfxClip = clip switch
+        {
+            SfxType.Shoot => shootSfx,
+            SfxType.Hit => hitSfx,
+            SfxType.Goal => goalSfx,
+            _ => throw new ArgumentOutOfRangeException(nameof(clip), clip, null)
+        };
+
+        sfxSource.PlayOneShot(sfxClip, sfxVolume);
     }
 
     public void SetMusicVolume(float volume)

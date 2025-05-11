@@ -4,6 +4,7 @@ public class Singleton<T> : MonoBehaviour
     where T : Component
 {
     private static T _instance;
+
     public static T Instance
     {
         get
@@ -11,9 +12,7 @@ public class Singleton<T> : MonoBehaviour
             if (_instance) return _instance;
 
             // Find existing instances
-            var objs = FindObjectsOfType(typeof(T)) as T[];
-
-            if (objs is { Length: > 0 })
+            if (FindObjectsOfType(typeof(T)) is T[] { Length: > 0 } objs)
             {
                 _instance = objs[0];
 
@@ -24,6 +23,7 @@ public class Singleton<T> : MonoBehaviour
 
                 return _instance;
             }
+
             return null;
         }
     }
