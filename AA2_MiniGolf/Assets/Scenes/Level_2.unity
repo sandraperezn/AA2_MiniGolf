@@ -1673,12 +1673,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 869129222}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6a9480fae1b98e44902c28bd3d8153b, type: 3}
+  m_Script: {fileID: 11500000, guid: 51db64fa687dec6428b18c056813d026, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &869129227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869129222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 202f4f34444f40f88afc6b2880293db8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   restitution: 0.8
   surfaceFriction: 0.4
-  isTrigger: 0
+  isTrigger: 1
+  sphereRadius: 0.06
 --- !u!1 &869975941 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: fa8a509d631045c40bd4785e4384c1c8, type: 3}
@@ -2620,11 +2633,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8979308566184540033, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000008476961
+      value: -0.000000008476964
       objectReference: {fileID: 0}
     - target: {fileID: 8979308566184540033, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000014683265
+      value: 0.0000000014683266
       objectReference: {fileID: 0}
     - target: {fileID: 9069719793018563525, guid: a14986d1916980a44809387148346e79, type: 3}
       propertyPath: m_FollowOffset.y
@@ -3190,15 +3203,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c2479b8c6f7b544418ee8ddb0fe418e7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.188293
+      value: 5.1693
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c2479b8c6f7b544418ee8ddb0fe418e7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0951547
+      value: 0.0862
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c2479b8c6f7b544418ee8ddb0fe418e7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.238263
+      value: 6.2142
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: c2479b8c6f7b544418ee8ddb0fe418e7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3244,6 +3257,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c2479b8c6f7b544418ee8ddb0fe418e7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 869129227}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: c2479b8c6f7b544418ee8ddb0fe418e7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 869129226}

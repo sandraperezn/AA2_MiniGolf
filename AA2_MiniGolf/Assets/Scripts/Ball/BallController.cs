@@ -1,5 +1,6 @@
 using Collisions;
 using UnityEngine;
+using Utils;
 
 namespace Ball
 {
@@ -83,7 +84,7 @@ namespace Ball
                     // — restitution
                     Vector3 normalVector = Vector3.Project(velocity, normal);
                     Vector3 tangentVector = velocity - normalVector;
-                    velocity = tangentVector - normalVector * hitCollider.restitution;;
+                    velocity = tangentVector - normalVector * hitCollider.restitution;
 
                     // stop sub-stepping after a hit this frame
                     break;
@@ -101,6 +102,7 @@ namespace Ball
         public void Launch(Vector3 initialVelocity)
         {
             velocity = initialVelocity;
+            AudioManager.Instance.PlaySfx(AudioManager.SfxType.Shoot);
         }
     }
 }
