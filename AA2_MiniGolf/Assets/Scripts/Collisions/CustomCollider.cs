@@ -9,7 +9,6 @@ public abstract class CustomCollider : MonoBehaviour
     
     public bool IsTrigger => isTrigger;
     public float SurfaceFriction => surfaceFriction;
-
     public Action OnTriggerEnterEvent;
     
     // Devuelve true si hay colisión, y te da la normal y penetración
