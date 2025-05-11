@@ -406,8 +406,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+      - m_Target: {fileID: 3802809249839735171}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: PlayGame
         m_Mode: 1
         m_Arguments:
@@ -596,6 +596,7 @@ GameObject:
   - component: {fileID: 330184412851980391}
   - component: {fileID: 1652004761690143415}
   - component: {fileID: 6221155268920861748}
+  - component: {fileID: 3802809249839735171}
   m_Layer: 5
   m_Name: MainMenuCanvas
   m_TagString: Untagged
@@ -618,7 +619,7 @@ RectTransform:
   - {fileID: 7440111029760064370}
   - {fileID: 8913412973717811181}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -688,6 +689,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &3802809249839735171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7312525911925125283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1faa5ea52d9e1d478e4640d2a0fe987, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8425642176346862051
 GameObject:
   m_ObjectHideFlags: 0

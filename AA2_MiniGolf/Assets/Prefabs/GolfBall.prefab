@@ -48,6 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46eae8def9d20a146a83a6ea2940b122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxVelocity: 50
+  skinWidth: 0.001
 --- !u!114 &1845572698614556628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,7 +66,6 @@ MonoBehaviour:
   maxDragDistance: 300
   maxPitchAngle: 15
   trajectoryPoints: 30
-  timeStep: 0.1
 --- !u!33 &1790970204843314577
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -93,7 +94,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6538903991835684241, guid: 9e0c07c41d4f79c498108438c98d556e, type: 3}
+  - {fileID: -6538903991835684241, guid: dd34671d675c3eb4991c6d3d8aaa8886, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
