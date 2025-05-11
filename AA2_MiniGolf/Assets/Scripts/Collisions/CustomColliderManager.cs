@@ -7,8 +7,8 @@ public class CustomCollisionManager : Singleton<CustomCollisionManager>
     public void Register(CustomCollider c) => colliders.Add(c);
     public void Unregister(CustomCollider c) => colliders.Remove(c);
 
-    // Comprueba si una esfera (center, radius) choca con alguno de tus CustomCollider.
-    // Devuelve el primero que choque, su normal y penetración.
+    // Check if a sphere (center, radius) collides with a registered CustomCollider
+    // Returns the first collision, its normal and penetration
     public bool CheckCollision(
         Vector3 center, float radius,
         out CustomCollider hitCollider,
@@ -23,12 +23,13 @@ public class CustomCollisionManager : Singleton<CustomCollisionManager>
                 hitCollider = c;
                 surfaceFriction = c.SurfaceFriction;
 
-                // Si es un trigger, no colisiona, pero sí detecta
+                // If is a trigger, detect but don't collide
                 if (c.IsTrigger)
                 {
                     c.OnTriggerEnterEvent?.Invoke();
                     penetration = 0;
                     normal = Vector3.zero;
+                    return false;
                 }
 
                 return true;

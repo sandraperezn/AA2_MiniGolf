@@ -27,10 +27,7 @@ public class AudioManager : Singleton<AudioManager>
         Goal
     }
 
-    private void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
+    private void Awake() => DontDestroyOnLoad(gameObject);
 
     private void Start()
     {

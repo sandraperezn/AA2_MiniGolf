@@ -5,13 +5,11 @@ public class BallController : MonoBehaviour
 {
     [SerializeField] private float maxVelocity = 50f;
     [SerializeField] private float skinWidth = 0.001f;
-
     private Vector3 velocity;
 
     // Offset from transform.position to the mesh’s true center (in world space)
     private Vector3 localCenterOffset;
     private Vector3 WorldCenterOffset => transform.TransformPoint(localCenterOffset) - transform.position;
-
     private float radius;
 
     private void Awake()
